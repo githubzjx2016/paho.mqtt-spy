@@ -1,21 +1,21 @@
 /***********************************************************************************
- * 
+ *
  * Copyright (c) 2014 Kamil Baczkowicz
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * and Eclipse Distribution License v1.0 which accompany this distribution.
  *
  * The Eclipse Public License is available at
  *    http://www.eclipse.org/legal/epl-v10.html
- *    
+ *
  * The Eclipse Distribution License is available at
  *   http://www.eclipse.org/org/documents/edl-v10.php.
  *
  * Contributors:
- * 
+ *
  *    Kamil Baczkowicz - initial API and implementation and/or initial documentation
- *    
+ *
  */
 package pl.baczkowicz.mqttspy.ui.controllers;
 
@@ -75,506 +75,447 @@ import pl.baczkowicz.spy.ui.versions.VersionManager;
 /**
  * Controller for the main window.
  */
-public class MqttSpyMainController
-{
-	private final static Logger logger = LoggerFactory.getLogger(MqttSpyMainController.class);
-	
-	/**
-	 * The name of this field needs to be set to the name of the pane +
-	 * Controller (i.e. <fx:id>Controller).
-	 */
-	@FXML
-	private ControlPanelController controlPanelPaneController;
-	
-	@FXML
-	private AnchorPane mainPane;
+public class MqttSpyMainController {
+    private final static Logger logger = LoggerFactory.getLogger(MqttSpyMainController.class);
 
-	@FXML
-	private TabPane connectionTabs;
+    /**
+     * The name of this field needs to be set to the name of the pane +
+     * Controller (i.e. <fx:id>Controller).
+     */
+    @FXML
+    private ControlPanelController controlPanelPaneController;
 
-	@FXML
-	private MenuItem openConfigFileMenu;
-	
-	@FXML
-	private MenuItem newConnectionMenu;
+    @FXML
+    private AnchorPane mainPane;
 
-	@FXML
-	private MenuItem newSubscriptionMenu;
-	
-	@FXML
-	private MenuItem editConnectionsMenu;
-	
-	@FXML
-	private RadioMenuItem defaultPerspective;
-	
-	@FXML
-	private RadioMenuItem basicPerspective;
-	
-	@FXML 
-	private RadioMenuItem detailedPerspective;
-	
-	@FXML
-	private RadioMenuItem spyPerspective;
-	
-	@FXML
-	private RadioMenuItem superSpyPerspective;
-	
-	@FXML
-	private CheckMenuItem resizeMessagePaneMenu;
+    @FXML
+    private TabPane connectionTabs;
 
-	private IConfigurationManager configurationManager;
+    @FXML
+    private MenuItem openConfigFileMenu;
 
-	private Stage stage;
-	
-	private Scene scene;
-	
-	private IKBus eventBus;
-	
-	private StatisticsManager statisticsManager;
+    @FXML
+    private MenuItem newConnectionMenu;
 
-	private MqttConnectionViewManager connectionViewManager;
-	
-	private double lastWidth;
-	
-	private double lastHeight;
+    @FXML
+    private MenuItem newSubscriptionMenu;
 
-	private VersionManager versionManager;
+    @FXML
+    private MenuItem editConnectionsMenu;
 
-	private MqttViewManager viewManager;
+    @FXML
+    private RadioMenuItem defaultPerspective;
 
-	private IConnectionFactory connectionFactory;
+    @FXML
+    private RadioMenuItem basicPerspective;
 
-	public MqttSpyMainController() throws XMLException
-	{
-		Thread.setDefaultUncaughtExceptionHandler(new SpyUncaughtExceptionHandler());		
-	}	
-	
-	public void init()
-	{									
-		statisticsManager.loadStats();
-		
-		// Set up scene
-		scene = getParentWindow().getScene();
-		
-		// Set up window events
-		getParentWindow().setOnCloseRequest(new EventHandler<WindowEvent>()
-		{
-			public void handle(WindowEvent t)
-			{
-				exit();
-			}
-		});		
-		scene.widthProperty().addListener(new ChangeListener<Number>() 
-		{
-		    @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) 
-		    {
-		    	if (!getStage().isMaximized())
-		    	{
-		    		setLastWidth((double) newSceneWidth);
-		    	}
-		    }
-		});
-		scene.heightProperty().addListener(new ChangeListener<Number>() 
-		{
-		    @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneHeight, Number newSceneHeight) 
-		    {
-		    	if (!getStage().isMaximized())
-		    	{
-		    		setLastHeight((double) newSceneHeight);
-		    	}
-		    }
-		});
+    @FXML
+    private RadioMenuItem detailedPerspective;
 
-		stage.setTitle(configurationManager.getDefaultPropertyFile().getApplicationName());
-		
-		controlPanelPaneController.setUserAndConfigItem(new MqttConfigControlPanelItem(configurationManager, eventBus));
-		controlPanelPaneController.setConnectionsItem(new ConnectionsControlPanelItem(configurationManager, connectionViewManager, connectionFactory, eventBus));
-		controlPanelPaneController.setStatsItem(new MqttStatsControlPanelItem(configurationManager, eventBus));
-		
-		controlPanelPaneController.setConfigurationMananger(configurationManager);
-		controlPanelPaneController.setEventBus(eventBus);		
-		controlPanelPaneController.setVersionManager(versionManager);
-		controlPanelPaneController.init();	
-		
-		new Thread(new ConnectionStatsUpdater(connectionViewManager)).start();
-		
-		resizeMessagePaneMenu.selectedProperty().addListener(new ChangeListener<Boolean>()
-		{
-			@Override
-			public void changed(ObservableValue<? extends Boolean> observable, final Boolean oldValue, final Boolean newValue)
-			{
-				configurationManager.getUiPropertyFile().setProperty(UiProperties.MESSAGE_PANE_RESIZE_PROPERTY, newValue.toString());
-			}
-		});
-		
-		eventBus.subscribe(this, this::onConnectionTabAdded, AddConnectionTabEvent.class);
-	}		
+    @FXML
+    private RadioMenuItem spyPerspective;
 
-	@FXML
-	public void createNewConnection()
-	{
-		logger.trace("Creating new connection...");
-		eventBus.publish(new ShowEditConnectionsWindowEvent(getParentWindow(), true, null));
-	}
+    @FXML
+    private RadioMenuItem superSpyPerspective;
 
-	@FXML
-	public void editConnections()
-	{
-		eventBus.publish(new ShowEditConnectionsWindowEvent(getParentWindow(), false, null));
-	}
-	
-	@FXML
-	public void newSubscription()
-	{
-		final Tab selectedTab = this.getConnectionTabs().getSelectionModel().getSelectedItem();
-		final MqttConnectionController controller = (MqttConnectionController) connectionViewManager.getControllerForTab(selectedTab);
-		
-		if (controller != null)
-		{
-			eventBus.publish(new ShowNewMqttSubscriptionWindowEvent(
-					controller, 
-					PaneVisibilityStatus.DETACHED,
-					controller.getNewSubscriptionPaneStatus().getVisibility()));
-		}
-	}
+    @FXML
+    private RadioMenuItem aiBoxPerspective;
 
-	@FXML
-	private void showFormatters()
-	{
-		eventBus.publish(new ShowFormattersWindowEvent(getParentWindow(), false));
-	}
-	
-	@FXML
-	public void showTestCases()
-	{
-		eventBus.publish(new ShowTestCasesWindowEvent(getParentWindow()));
-	}
-	
-	@FXML
-	public void openMessageLog()
-	{
-		eventBus.publish(new ShowMessageLogEvent(getParentWindow()));
-	}
-	
-	@FXML
-	public void exit()
-	{
-		// This is triggered by the user
-		connectionViewManager.disconnectAll();
-		
-		statisticsManager.saveStats();
-		
-		configurationManager.saveUiProperties(
-				getLastWidth(), getLastHeight(), stage.isMaximized(), 
-				viewManager.getPerspective(), resizeMessagePaneMenu.isSelected());
-		
-		System.exit(0);
-	}
+    @FXML
+    private CheckMenuItem resizeMessagePaneMenu;
 
-	/**
-	 * Sets the perspective.
-	 * 
-	 * @param selectedPerspective the selectedPerspective to set
-	 */
-	private void updateSelectedPerspective(final SpyPerspective selectedPerspective)
-	{
-		switch (selectedPerspective)
-		{
-			case BASIC:
-				basicPerspective.setSelected(true);
-				break;
-			case DETAILED:
-				detailedPerspective.setSelected(true);
-				break;
-			case SPY:
-				spyPerspective.setSelected(true);
-				break;
-			case SUPER_SPY:
-				superSpyPerspective.setSelected(true);
-				break;
-			default:
-				defaultPerspective.setSelected(true);
-				break;		
-		}
-		
-		eventBus.publish(new NewPerspectiveSelectedEvent(selectedPerspective));
-	}
+    private IConfigurationManager configurationManager;
 
-	public TabPane getConnectionTabs()
-	{
-		return connectionTabs;
-	}
+    private Stage stage;
 
-	public void onConnectionTabAdded(final AddConnectionTabEvent event)
-	{
-		addConnectionTab(event.getTab());
-	}
-	
-	private void addConnectionTab(Tab tab)
-	{
-		connectionTabs.getTabs().add(tab);
-	}
+    private Scene scene;
 
-	private Window getParentWindow()
-	{
-		return mainPane.getScene().getWindow();
-	}
+    private IKBus eventBus;
 
-	@FXML
-	public void openConfigurationFile()
-	{
-		final FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Select configuration file to open");
-		String extensions = "xml";
-		fileChooser.setSelectedExtensionFilter(new ExtensionFilter("XML file", extensions));
+    private StatisticsManager statisticsManager;
 
-		final File selectedFile = fileChooser.showOpenDialog(getParentWindow());
+    private MqttConnectionViewManager connectionViewManager;
 
-		if (selectedFile != null)
-		{
-			eventBus.publish(new LoadConfigurationFileEvent(selectedFile));
-			// loadConfigurationFileOnRunLater(selectedFile);
-		}
-	}
-	
-	@FXML
-	private void showPerspective()
-	{
-		final SpyPerspective selectedPerspective;
-		
-		if (spyPerspective.isSelected())
-		{
-			selectedPerspective = SpyPerspective.SPY;
-		}
-		else if (superSpyPerspective.isSelected())
-		{
-			selectedPerspective = SpyPerspective.SUPER_SPY;
-		}		
-		else if (detailedPerspective.isSelected())
-		{
-			selectedPerspective = SpyPerspective.DETAILED;
-		}
-		else if (basicPerspective.isSelected())
-		{
-			selectedPerspective = SpyPerspective.BASIC;
-		}
-		else
-		{
-			selectedPerspective = SpyPerspective.DEFAULT;
-		}
-		
-		eventBus.publish(new NewPerspectiveSelectedEvent(selectedPerspective));		
-	}
-	
-	
-	@FXML
-	private void resizeMessagePane()
-	{
-		// Connection tabs
-		for (final MqttConnectionController controller : connectionViewManager.getConnectionControllers())
-		{
-			controller.getResizeMessageContentMenu().setSelected(resizeMessagePaneMenu.isSelected());
-		}
-		// Offline (message log) tabs
-		for (final MqttConnectionController controller : connectionViewManager.getOfflineConnectionControllers())
-		{
-			controller.getResizeMessageContentMenu().setSelected(resizeMessagePaneMenu.isSelected());
-		}
-	}
-	
-	@FXML
-	private void restoreConfiguration()
-	{
-		if (DialogFactory.showDefaultConfigurationFileMissingChoice("Restore defaults", mainPane.getScene()))
-		{
-			eventBus.publish(new LoadConfigurationFileEvent(BaseConfigurationManager.getDefaultConfigurationFileObject()));			
-		}
-	}
-	
-	@FXML
-	private void showAbout()
-	{
-		eventBus.publish(new ShowAboutWindowEvent(getParentWindow()));					
-	}
-	
-	@FXML
-	private void openGettingInvolved()
-	{
-		eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "Getting-involved"));
-	}
+    private double lastWidth;
 
-	@FXML
-	private void overviewWiki()
-	{
-		eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "Overview"));		
-	}
-	
-	@FXML
-	private void changelogWiki()
-	{
-		eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "Changelog"));
-	}
-	
-	@FXML
-	private void scriptingWiki()
-	{
-		eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "Scripting"));
-	}
-	
-	@FXML
-	private void messageSearchWiki()
-	{
-		eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "MessageSearch"));
-	}
-	
+    private double lastHeight;
+
+    private VersionManager versionManager;
+
+    private MqttViewManager viewManager;
+
+    private IConnectionFactory connectionFactory;
+
+    public MqttSpyMainController() throws XMLException {
+        Thread.setDefaultUncaughtExceptionHandler(new SpyUncaughtExceptionHandler());
+    }
+
+    public void init() {
+        statisticsManager.loadStats();
+
+        // Set up scene
+        scene = getParentWindow().getScene();
+
+        // Set up window events
+        getParentWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent t) {
+                exit();
+            }
+        });
+        scene.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+                if (!getStage().isMaximized()) {
+                    setLastWidth((double) newSceneWidth);
+                }
+            }
+        });
+        scene.heightProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneHeight, Number newSceneHeight) {
+                if (!getStage().isMaximized()) {
+                    setLastHeight((double) newSceneHeight);
+                }
+            }
+        });
+
+        stage.setTitle(configurationManager.getDefaultPropertyFile().getApplicationName());
+
+        controlPanelPaneController.setUserAndConfigItem(new MqttConfigControlPanelItem(configurationManager, eventBus));
+        controlPanelPaneController.setConnectionsItem(new ConnectionsControlPanelItem(configurationManager, connectionViewManager, connectionFactory, eventBus));
+        controlPanelPaneController.setStatsItem(new MqttStatsControlPanelItem(configurationManager, eventBus));
+
+        controlPanelPaneController.setConfigurationMananger(configurationManager);
+        controlPanelPaneController.setEventBus(eventBus);
+        controlPanelPaneController.setVersionManager(versionManager);
+        controlPanelPaneController.init();
+
+        new Thread(new ConnectionStatsUpdater(connectionViewManager)).start();
+
+        resizeMessagePaneMenu.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, final Boolean oldValue, final Boolean newValue) {
+                configurationManager.getUiPropertyFile().setProperty(UiProperties.MESSAGE_PANE_RESIZE_PROPERTY, newValue.toString());
+            }
+        });
+
+        eventBus.subscribe(this, this::onConnectionTabAdded, AddConnectionTabEvent.class);
+    }
+
+    @FXML
+    public void createNewConnection() {
+        logger.trace("Creating new connection...");
+        eventBus.publish(new ShowEditConnectionsWindowEvent(getParentWindow(), true, null));
+    }
+
+    @FXML
+    public void editConnections() {
+        eventBus.publish(new ShowEditConnectionsWindowEvent(getParentWindow(), false, null));
+    }
+
+    @FXML
+    public void newSubscription() {
+        final Tab selectedTab = this.getConnectionTabs().getSelectionModel().getSelectedItem();
+        final MqttConnectionController controller = (MqttConnectionController) connectionViewManager.getControllerForTab(selectedTab);
+
+        if (controller != null) {
+            eventBus.publish(new ShowNewMqttSubscriptionWindowEvent(
+                    controller,
+                    PaneVisibilityStatus.DETACHED,
+                    controller.getNewSubscriptionPaneStatus().getVisibility()));
+        }
+    }
+
+    @FXML
+    private void showFormatters() {
+        eventBus.publish(new ShowFormattersWindowEvent(getParentWindow(), false));
+    }
+
+    @FXML
+    public void showTestCases() {
+        eventBus.publish(new ShowTestCasesWindowEvent(getParentWindow()));
+    }
+
+    @FXML
+    public void openMessageLog() {
+        eventBus.publish(new ShowMessageLogEvent(getParentWindow()));
+    }
+
+    @FXML
+    public void exit() {
+        // This is triggered by the user
+        connectionViewManager.disconnectAll();
+
+        statisticsManager.saveStats();
+
+        configurationManager.saveUiProperties(
+                getLastWidth(), getLastHeight(), stage.isMaximized(),
+                viewManager.getPerspective(), resizeMessagePaneMenu.isSelected());
+
+        System.exit(0);
+    }
+
+    /**
+     * Sets the perspective.
+     *
+     * @param selectedPerspective the selectedPerspective to set
+     */
+    private void updateSelectedPerspective(final SpyPerspective selectedPerspective) {
+        switch (selectedPerspective) {
+            case BASIC:
+                basicPerspective.setSelected(true);
+                break;
+            case AI_BOX:
+                aiBoxPerspective.setSelected(true);
+                break;
+            case DETAILED:
+                detailedPerspective.setSelected(true);
+                break;
+            case SPY:
+                spyPerspective.setSelected(true);
+                break;
+            case SUPER_SPY:
+                superSpyPerspective.setSelected(true);
+                break;
+            default:
+                defaultPerspective.setSelected(true);
+                break;
+
+        }
+
+        eventBus.publish(new NewPerspectiveSelectedEvent(selectedPerspective));
+    }
+
+    public TabPane getConnectionTabs() {
+        return connectionTabs;
+    }
+
+    public void onConnectionTabAdded(final AddConnectionTabEvent event) {
+        addConnectionTab(event.getTab());
+    }
+
+    private void addConnectionTab(Tab tab) {
+        connectionTabs.getTabs().add(tab);
+    }
+
+    private Window getParentWindow() {
+        return mainPane.getScene().getWindow();
+    }
+
+    @FXML
+    public void openConfigurationFile() {
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select configuration file to open");
+        String extensions = "xml";
+        fileChooser.setSelectedExtensionFilter(new ExtensionFilter("XML file", extensions));
+
+        final File selectedFile = fileChooser.showOpenDialog(getParentWindow());
+
+        if (selectedFile != null) {
+            eventBus.publish(new LoadConfigurationFileEvent(selectedFile));
+            // loadConfigurationFileOnRunLater(selectedFile);
+        }
+    }
+
+    @FXML
+    private void showPerspective() {
+        final SpyPerspective selectedPerspective;
+
+        if (spyPerspective.isSelected()) {
+            selectedPerspective = SpyPerspective.SPY;
+        } else if (superSpyPerspective.isSelected()) {
+            selectedPerspective = SpyPerspective.SUPER_SPY;
+        } else if (detailedPerspective.isSelected()) {
+            selectedPerspective = SpyPerspective.DETAILED;
+        } else if (basicPerspective.isSelected()) {
+            selectedPerspective = SpyPerspective.BASIC;
+        } else if (aiBoxPerspective.isSelected()) {
+             selectedPerspective = SpyPerspective.AI_BOX;
+        } else {
+            selectedPerspective = SpyPerspective.DEFAULT;
+        }
+
+        eventBus.publish(new NewPerspectiveSelectedEvent(selectedPerspective));
+    }
+
+
+    @FXML
+    private void resizeMessagePane() {
+        // Connection tabs
+        for (final MqttConnectionController controller : connectionViewManager.getConnectionControllers()) {
+            controller.getResizeMessageContentMenu().setSelected(resizeMessagePaneMenu.isSelected());
+        }
+        // Offline (message log) tabs
+        for (final MqttConnectionController controller : connectionViewManager.getOfflineConnectionControllers()) {
+            controller.getResizeMessageContentMenu().setSelected(resizeMessagePaneMenu.isSelected());
+        }
+    }
+
+    @FXML
+    private void restoreConfiguration() {
+        if (DialogFactory.showDefaultConfigurationFileMissingChoice("Restore defaults", mainPane.getScene())) {
+            eventBus.publish(new LoadConfigurationFileEvent(BaseConfigurationManager.getDefaultConfigurationFileObject()));
+        }
+    }
+
+    @FXML
+    private void showAbout() {
+        eventBus.publish(new ShowAboutWindowEvent(getParentWindow()));
+    }
+
+    @FXML
+    private void openGettingInvolved() {
+        eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "Getting-involved"));
+    }
+
+    @FXML
+    private void overviewWiki() {
+        eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "Overview"));
+    }
+
+    @FXML
+    private void changelogWiki() {
+        eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "Changelog"));
+    }
+
+    @FXML
+    private void scriptingWiki() {
+        eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "Scripting"));
+    }
+
+    @FXML
+    private void messageSearchWiki() {
+        eventBus.publish(new ShowExternalWebPageEvent(configurationManager.getDefaultPropertyFile().getApplicationWikiUrl() + "MessageSearch"));
+    }
+
 //	@FXML
 //	private void loggingWiki()
 //	{
 //		eventBus.publish(new ShowExternalWebPageEvent("https://github.com/kamilfb/mqtt-spy/wiki/Logging"));
 //	}
 
-	// *********************
+    // *********************
 
-	public void setStage(Stage primaryStage)
-	{
-		this.stage = primaryStage;		
-	}
-	
-	public Stage getStage()
-	{
-		return this.stage;		
-	}
+    public void setStage(Stage primaryStage) {
+        this.stage = primaryStage;
+    }
 
-	/**
-	 * Sets the configuration manager.
-	 * 
-	 * @param configurationManager the configurationManager to set
-	 */
-	public void setConfigurationManager(IConfigurationManager configurationManager)
-	{
-		this.configurationManager = configurationManager;
-	}
-	
-	/**
-	 * Sets the event bus.
-	 *  
-	 * @param eventBus the eventBus to set
-	 */
-	public void setEventBus(final IKBus eventBus)
-	{
-		this.eventBus = eventBus;
-	}
-	
-	public void setConnectionManager(final MqttConnectionViewManager connectionManager)
-	{
-		this.connectionViewManager = connectionManager;		
-	}
+    public Stage getStage() {
+        return this.stage;
+    }
 
-	public void setStatisticsManager(final StatisticsManager statisticsManager)
-	{
-		this.statisticsManager = statisticsManager;		
-	}
+    /**
+     * Sets the configuration manager.
+     *
+     * @param configurationManager the configurationManager to set
+     */
+    public void setConfigurationManager(IConfigurationManager configurationManager) {
+        this.configurationManager = configurationManager;
+    }
 
-	/**
-	 * Gets last recorded width.
-	 * 
-	 * @return the lastWidth
-	 */
-	public double getLastWidth()
-	{
-		return lastWidth;
-	}
+    /**
+     * Sets the event bus.
+     *
+     * @param eventBus the eventBus to set
+     */
+    public void setEventBus(final IKBus eventBus) {
+        this.eventBus = eventBus;
+    }
 
-	/**
-	 * Sets last recorded width.
-	 * 
-	 * @param lastWidth the lastWidth to set
-	 */
-	public void setLastWidth(double lastWidth)
-	{
-		this.lastWidth = lastWidth;
-	}
+    public void setConnectionManager(final MqttConnectionViewManager connectionManager) {
+        this.connectionViewManager = connectionManager;
+    }
 
-	/**
-	 * Gets last recorder height
-	 * 
-	 * @return the lastHeight
-	 */
-	public double getLastHeight()
-	{
-		return lastHeight;
-	}
+    public void setStatisticsManager(final StatisticsManager statisticsManager) {
+        this.statisticsManager = statisticsManager;
+    }
 
-	/**
-	 * Sets last recorded height.
-	 * 
-	 * @param lastHeight the lastHeight to set
-	 */
-	public void setLastHeight(double lastHeight)
-	{
-		this.lastHeight = lastHeight;
-	}
+    /**
+     * Gets last recorded width.
+     *
+     * @return the lastWidth
+     */
+    public double getLastWidth() {
+        return lastWidth;
+    }
 
-	private CheckMenuItem getResizeMessagePaneMenu()
-	{
-		return resizeMessagePaneMenu;
-	}
+    /**
+     * Sets last recorded width.
+     *
+     * @param lastWidth the lastWidth to set
+     */
+    public void setLastWidth(double lastWidth) {
+        this.lastWidth = lastWidth;
+    }
 
-	public void setViewManager(final MqttViewManager viewManager)
-	{
-		this.viewManager = viewManager;		
-	}
+    /**
+     * Gets last recorder height
+     *
+     * @return the lastHeight
+     */
+    public double getLastHeight() {
+        return lastHeight;
+    }
 
-	public void setVersionManager(final VersionManager versionManager)
-	{
-		this.versionManager = versionManager;		
-	}
+    /**
+     * Sets last recorded height.
+     *
+     * @param lastHeight the lastHeight to set
+     */
+    public void setLastHeight(double lastHeight) {
+        this.lastHeight = lastHeight;
+    }
 
-	/**
-	 * @return the newConnectionMenu
-	 */
-	public MenuItem getNewConnectionMenu()
-	{
-		return newConnectionMenu;
-	}
+    private CheckMenuItem getResizeMessagePaneMenu() {
+        return resizeMessagePaneMenu;
+    }
 
-	/**
-	 * @param newConnectionMenu the newConnectionMenu to set
-	 */
-	public void setNewConnectionMenu(MenuItem newConnectionMenu)
-	{
-		this.newConnectionMenu = newConnectionMenu;
-	}
+    public void setViewManager(final MqttViewManager viewManager) {
+        this.viewManager = viewManager;
+    }
 
-	/**
-	 * @return the editConnectionsMenu
-	 */
-	public MenuItem getEditConnectionsMenu()
-	{
-		return editConnectionsMenu;
-	}
+    public void setVersionManager(final VersionManager versionManager) {
+        this.versionManager = versionManager;
+    }
 
-	/**
-	 * @param editConnectionsMenu the editConnectionsMenu to set
-	 */
-	public void setEditConnectionsMenu(MenuItem editConnectionsMenu)
-	{
-		this.editConnectionsMenu = editConnectionsMenu;
-	}
+    /**
+     * @return the newConnectionMenu
+     */
+    public MenuItem getNewConnectionMenu() {
+        return newConnectionMenu;
+    }
 
-	public MenuItem getNewSubuscriptionMenu()
-	{
-		return newSubscriptionMenu;
-	}
-	
-	public void updateUiProperties(final PropertyFileLoader uiPropertyFile)
-	{
-		updateSelectedPerspective(UiProperties.getApplicationPerspective(configurationManager.getUiPropertyFile()));
-		getResizeMessagePaneMenu().setSelected(UiProperties.getResizeMessagePane(configurationManager.getUiPropertyFile()));		
-	}
+    /**
+     * @param newConnectionMenu the newConnectionMenu to set
+     */
+    public void setNewConnectionMenu(MenuItem newConnectionMenu) {
+        this.newConnectionMenu = newConnectionMenu;
+    }
 
-	public void setConnectionFactory(IConnectionFactory connectionFactory)
-	{
-		this.connectionFactory = connectionFactory;		
-	}
+    /**
+     * @return the editConnectionsMenu
+     */
+    public MenuItem getEditConnectionsMenu() {
+        return editConnectionsMenu;
+    }
+
+    /**
+     * @param editConnectionsMenu the editConnectionsMenu to set
+     */
+    public void setEditConnectionsMenu(MenuItem editConnectionsMenu) {
+        this.editConnectionsMenu = editConnectionsMenu;
+    }
+
+    public MenuItem getNewSubuscriptionMenu() {
+        return newSubscriptionMenu;
+    }
+
+    public void updateUiProperties(final PropertyFileLoader uiPropertyFile) {
+        updateSelectedPerspective(UiProperties.getApplicationPerspective(configurationManager.getUiPropertyFile()));
+        getResizeMessagePaneMenu().setSelected(UiProperties.getResizeMessagePane(configurationManager.getUiPropertyFile()));
+    }
+
+    public void setConnectionFactory(IConnectionFactory connectionFactory) {
+        this.connectionFactory = connectionFactory;
+    }
 }

@@ -1,21 +1,21 @@
 /***********************************************************************************
- * 
+ *
  * Copyright (c) 2014 Kamil Baczkowicz
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * and Eclipse Distribution License v1.0 which accompany this distribution.
  *
  * The Eclipse Public License is available at
  *    http://www.eclipse.org/legal/epl-v10.html
- *    
+ *
  * The Eclipse Distribution License is available at
  *   http://www.eclipse.org/org/documents/edl-v10.php.
  *
  * Contributors:
- * 
+ *
  *    Kamil Baczkowicz - initial API and implementation and/or initial documentation
- *    
+ *
  */
 package pl.baczkowicz.mqttspy.ui.controllers;
 
@@ -80,786 +80,689 @@ import pl.baczkowicz.spy.ui.utils.UiUtils;
 
 /**
  * Controller looking after the connection tab.
- * 
+ * <p>
  * TODO: create an MqttConnectionViewManager, and simplify this controller class
  */
-public class MqttConnectionController implements Initializable, TabController, PaneVisibilityManager, IConnectionController
-{
-	private static final int MIN_COLLAPSED_PANE_HEIGHT = 26;
-	
-	private static final int SUBSCRIPTION_PANE_MIN_EXPANDED_HEIGHT = 66;
-	
-	private static final int TEST_CASES_PANE_MIN_EXPANDED_HEIGHT = 190;
-	
-	private static final int PUBLICATION_PANE_MIN_EXPANDED_HEIGHT = 96;	
-	
-	private static final int SCRIPTED_PUBLICATION_PANE_MIN_EXPANDED_HEIGHT = 136;	
+public class MqttConnectionController implements Initializable, TabController, PaneVisibilityManager, IConnectionController {
+    private static final int MIN_COLLAPSED_PANE_HEIGHT = 26;
 
-	private static final double MIN_WINDOW_HIGHT = SUBSCRIPTION_PANE_MIN_EXPANDED_HEIGHT;
-	
-	private static final double MIN_WINDOW_WIDTH = 300;
+    private static final int SUBSCRIPTION_PANE_MIN_EXPANDED_HEIGHT = 66;
 
-	private final static Logger logger = LoggerFactory.getLogger(MqttConnectionController.class);
+    private static final int TEST_CASES_PANE_MIN_EXPANDED_HEIGHT = 190;
 
-	@FXML
-	private AnchorPane connectionPane;
-	
-	@FXML
-	private SplitPane splitPane;
-	
-	@FXML
-	private AnchorPane newPublicationPane;
-	
-	@FXML
-	private AnchorPane newSubscriptionPane;
-	
-	/**
-	 * The name of this field needs to be set to the name of the pane +
-	 * Controller (i.e. <fx:id>Controller).
-	 */
-	@FXML
-	private NewPublicationController newPublicationPaneController;
-	
-	/**
-	 * The name of this field needs to be set to the name of the pane +
-	 * Controller (i.e. <fx:id>Controller).
-	 */
-	@FXML
-	private MqttPublicationScriptsController publicationScriptsPaneController;
-	
-	/**
-	 * The name of this field needs to be set to the name of the pane +
-	 * Controller (i.e. <fx:id>Controller).
-	 */
-	@FXML
-	private NewSubscriptionController newSubscriptionPaneController;
-	
-	/**
-	 * The name of this field needs to be set to the name of the pane +
-	 * Controller (i.e. <fx:id>Controller).
-	 */
-	@FXML
-	private TestCasesExecutionController testCasesPaneController;
-	
-	/** For convenience, this represents a controller for the subscriptions titled pane. */
-	private SubscriptionsController subscriptionsController = new SubscriptionsController();
+    private static final int PUBLICATION_PANE_MIN_EXPANDED_HEIGHT = 96;
 
-	@FXML 
-	private Button newSubButton;
-	
-	@FXML
-	private TitledPane publishMessageTitledPane;
-	
-	@FXML
-	private TitledPane newSubscriptionTitledPane;
+    private static final int SCRIPTED_PUBLICATION_PANE_MIN_EXPANDED_HEIGHT = 136;
 
-	@FXML
-	private TitledPane scriptedPublicationsTitledPane;
-	
-	@FXML
-	private TitledPane subscriptionsTitledPane;
-	
-	@FXML
-	private TitledPane testCasesTitledPane;
-	
-	private TitledPaneStatus publishMessageTitledStatus = new TitledPaneStatus(0);
-	
-	private TitledPaneStatus newSubscriptionTitledStatus = new TitledPaneStatus(3);
+    private static final double MIN_WINDOW_HIGHT = SUBSCRIPTION_PANE_MIN_EXPANDED_HEIGHT;
 
-	private TitledPaneStatus scriptedPublicationsTitledStatus = new TitledPaneStatus(1);
-	
-	private TitledPaneStatus subscriptionsTitledStatus = new TitledPaneStatus(4);
-	
-	private TitledPaneStatus testCasesTitledStatus = new TitledPaneStatus(2);
-	
-	@FXML
-	private TabPane subscriptionTabs;
+    private static final double MIN_WINDOW_WIDTH = 300;
 
-	private MqttAsyncConnection connection;
+    private final static Logger logger = LoggerFactory.getLogger(MqttConnectionController.class);
 
-	private Tab connectionTab;
-	
-	private Tooltip tooltip;
+    @FXML
+    private AnchorPane connectionPane;
 
-	private StatisticsManager statisticsManager;
+    @FXML
+    private SplitPane splitPane;
 
-	private MqttConnectionViewManager connectionManager;
+    @FXML
+    private AnchorPane newPublicationPane;
 
-	private IKBus eventBus;
-	
-	private Map<TitledPane, TitledPaneStatus> paneToStatus = new HashMap<>();
+    @FXML
+    private AnchorPane newSubscriptionPane;
 
-	private boolean detailedView;
+    /**
+     * The name of this field needs to be set to the name of the pane +
+     * Controller (i.e. <fx:id>Controller).
+     */
+    @FXML
+    private NewPublicationController newPublicationPaneController;
 
-	private boolean replayMode;
+    /**
+     * The name of this field needs to be set to the name of the pane +
+     * Controller (i.e. <fx:id>Controller).
+     */
+    @FXML
+    private MqttPublicationScriptsController publicationScriptsPaneController;
 
-	private TabStatus tabStatus;
+    /**
+     * The name of this field needs to be set to the name of the pane +
+     * Controller (i.e. <fx:id>Controller).
+     */
+    @FXML
+    private NewSubscriptionController newSubscriptionPaneController;
 
-	private CheckMenuItem resizeMessageContentMenu = new CheckMenuItem();
+    /**
+     * The name of this field needs to be set to the name of the pane +
+     * Controller (i.e. <fx:id>Controller).
+     */
+    @FXML
+    private TestCasesExecutionController testCasesPaneController;
 
-	private ChangeListener<Boolean> createChangeListener()
-	{
-		return new ChangeListener<Boolean>()
-		{
-			@Override
-			public void changed(ObservableValue<? extends Boolean> arg0, Boolean arg1, Boolean arg2)
-			{
-				updateMinHeights();
-			}
-		};
-	}
-	
-	public void initialize(URL location, ResourceBundle resources)
-	{		
-		newSubButton.setTooltip(new Tooltip("Create new subscription [" + MqttViewManager.newSubscription.getDisplayText() + "]"));
-		final MenuItem attach = new MenuItem("Show attached");
-		final MqttConnectionController controller = this;
-		attach.setOnAction(new EventHandler<ActionEvent>()
-		{					
-			@Override
-			public void handle(ActionEvent event)
-			{
-				showNewSubscription(PaneVisibilityStatus.ATTACHED, controller);				
-			}
-		});
-		newSubButton.setOnMouseClicked(new EventHandler<MouseEvent>()
-		{
-			@Override
-			public void handle(MouseEvent event)
-			{
-				if (MouseButton.PRIMARY.equals(event.getButton()))
-				{
-					showNewSubscription(PaneVisibilityStatus.DETACHED, controller);
-				}
-				else
-				{
-					newSubButton.getContextMenu().show(newSubButton.getScene().getWindow());
-				}
-			}				
-		});
-		
-		newSubButton.setContextMenu(new ContextMenu(attach));	
-		newSubButton.setDisable(false);
-	}
-		
-	private void showNewSubscription(final PaneVisibilityStatus status, final MqttConnectionController connectionController)
-	{
-		eventBus.publish(new ShowNewMqttSubscriptionWindowEvent(connectionController, 
-				status,
-				connectionController.getNewSubscriptionPaneStatus().getVisibility()));
-	}
-	
-	@FXML
-	public void newSubscription()
-	{
-		final Tab selectedTab = connectionTab;
-		final MqttConnectionController controller = (MqttConnectionController) connectionManager.getControllerForTab(selectedTab);
-		
-		if (controller != null)
-		{
-			eventBus.publish(new ShowNewMqttSubscriptionWindowEvent(
-					controller, 
-					PaneVisibilityStatus.DETACHED,
-					controller.getNewSubscriptionPaneStatus().getVisibility()));
-		}
-	}
-	
-	public void init()
-	{
-		publishMessageTitledStatus.setController(newPublicationPaneController);
-		newSubscriptionTitledStatus.setController(newSubscriptionPaneController);
-		scriptedPublicationsTitledStatus.setController(publicationScriptsPaneController);
-		subscriptionsTitledStatus.setController(subscriptionsController);
-		testCasesTitledStatus.setController(testCasesPaneController);
-		
-		subscriptionsTitledPane.expandedProperty().addListener(createChangeListener());
-		
-		// panes.put(subscriptionsController, true);
-		subscriptionsTitledStatus.setVisibility(PaneVisibilityStatus.ATTACHED);
-		paneToStatus.put(subscriptionsTitledPane, subscriptionsTitledStatus);
-		
-		subscriptionsController.setTitledPane(subscriptionsTitledPane);
-		subscriptionsController.setConnectionController(this);
-		subscriptionsController.init();
-		
-		if (!replayMode)
-		{
-			publishMessageTitledPane.expandedProperty().addListener(createChangeListener());		
-			scriptedPublicationsTitledPane.expandedProperty().addListener(createChangeListener());		
-			newSubscriptionTitledPane.expandedProperty().addListener(createChangeListener());
-						
-			scriptedPublicationsTitledPane.setExpanded(false);			
-			
-			publishMessageTitledStatus.setVisibility(PaneVisibilityStatus.ATTACHED);
-			scriptedPublicationsTitledStatus.setVisibility(PaneVisibilityStatus.ATTACHED);
-			newSubscriptionTitledStatus.setVisibility(PaneVisibilityStatus.ATTACHED);
-			testCasesTitledStatus.setVisibility(PaneVisibilityStatus.NOT_VISIBLE);
-			
-			paneToStatus.put(publishMessageTitledPane, publishMessageTitledStatus);
-			paneToStatus.put(scriptedPublicationsTitledPane, scriptedPublicationsTitledStatus);
-			paneToStatus.put(newSubscriptionTitledPane, newSubscriptionTitledStatus);			
-			
-			newPublicationPaneController.setConnection(connection);
-			newPublicationPaneController.setScriptManager(connection.getScriptManager());
-			newPublicationPaneController.setEventBus(eventBus);
-			newPublicationPaneController.setConnectionController(this);
-			newPublicationPaneController.setTitledPane(publishMessageTitledPane);
-			newPublicationPaneController.init();
-			
-			newSubscriptionPaneController.setConnection(connection);
-			newSubscriptionPaneController.setConnectionController(this);
-			newSubscriptionPaneController.setEventBus(eventBus);
-			newSubscriptionPaneController.setConnectionManager(connectionManager);
-			newSubscriptionPaneController.setTitledPane(newSubscriptionTitledPane);
-			newSubscriptionPaneController.init();
-			
-			publicationScriptsPaneController.setConnection(connection);
-			publicationScriptsPaneController.setEventBus(eventBus);
-			publicationScriptsPaneController.setPaneVisibilityManager(this);
-			publicationScriptsPaneController.setTitledPane(scriptedPublicationsTitledPane);
-			publicationScriptsPaneController.init();	
-			
-			tooltip = new Tooltip();
-			connectionTab.setTooltip(tooltip);
-		}
-		else
-		{
-			// If in replay more, remote the panes from the split pane altogether
-			// TODO: don't add them in the first place?
-			splitPane.getItems().remove(publishMessageTitledPane);
-			splitPane.getItems().remove(scriptedPublicationsTitledPane);
-			splitPane.getItems().remove(newSubscriptionTitledPane);
-			splitPane.getItems().remove(testCasesTitledPane);
-		}
-		
-		updateVisiblePanes();
-		updateMinHeights();
-	}
-	
-	private void initialiseTestCasesPane()
-	{
-		if (testCasesPaneController == null)
-		{
-			final FXMLLoader loader = FxmlUtils.createFxmlLoaderForProjectFile("TestCasesExecutionPane.fxml");
-			final AnchorPane testCasesPane = FxmlUtils.loadAnchorPane(loader);
-			
-			testCasesTitledPane = new TitledPane();
-			testCasesTitledPane.setText("Test cases");
-			testCasesTitledPane.setContent(testCasesPane);
-			testCasesTitledPane.expandedProperty().addListener(createChangeListener());
-			testCasesTitledPane.setExpanded(false);
-			
-			testCasesPaneController = loader.getController();
-			final InteractiveMqttScriptManager scriptManager = new InteractiveMqttScriptManager(eventBus);
-			scriptManager.setConnection(connection);
-			testCasesPaneController.setScriptManager(scriptManager);
-			
-			testCasesPaneController.setTitledPane(testCasesTitledPane);
-			testCasesPaneController.init();
-			testCasesPaneController.setSettingsButton(MqttViewManager.createTitleButtons(testCasesPaneController, new AnchorPane(), this));
-			
-			testCasesTitledStatus.setController(testCasesPaneController);
-						
-			paneToStatus.put(testCasesTitledPane, testCasesTitledStatus);
-			
-			logger.debug("Test cases pane initialised!");
-		}
-	}
-	
-	public Map<TitledPane, TitledPaneStatus> getPaneToStatusMapping()
-	{
-		return paneToStatus;
-	}
-	
-	public void setConnectionManager(final MqttConnectionViewManager connectionManager)
-	{
-		this.connectionManager = connectionManager;
-	}
-	
-	public void updateMinHeights()
-	{
-		if (publishMessageTitledPane.isExpanded())
-		{
-			publishMessageTitledPane.setMinHeight(PUBLICATION_PANE_MIN_EXPANDED_HEIGHT);
-		}
-		else
-		{
-			publishMessageTitledPane.setMinHeight(MIN_COLLAPSED_PANE_HEIGHT);
-		}
-		
-		if (scriptedPublicationsTitledPane.isExpanded())
-		{
-			scriptedPublicationsTitledPane.setMinHeight(SCRIPTED_PUBLICATION_PANE_MIN_EXPANDED_HEIGHT);
-		}
-		else
-		{
-			scriptedPublicationsTitledPane.setMinHeight(MIN_COLLAPSED_PANE_HEIGHT);
-		}
-		
-		if (newSubscriptionTitledPane.isExpanded())
-		{
-			newSubscriptionTitledPane.setMinHeight(SUBSCRIPTION_PANE_MIN_EXPANDED_HEIGHT);
-			newSubscriptionTitledPane.setMaxHeight(SUBSCRIPTION_PANE_MIN_EXPANDED_HEIGHT);
-		}
-		else
-		{
-			newSubscriptionTitledPane.setMinHeight(MIN_COLLAPSED_PANE_HEIGHT);
-			newSubscriptionTitledPane.setMaxHeight(MIN_COLLAPSED_PANE_HEIGHT);
-		}
-		
-		if (testCasesTitledPane != null)
-		{
-			if (testCasesTitledPane.isExpanded())
-			{
-				testCasesTitledPane.setMinHeight(TEST_CASES_PANE_MIN_EXPANDED_HEIGHT);
-			}
-			else
-			{
-				testCasesTitledPane.setMinHeight(MIN_COLLAPSED_PANE_HEIGHT);
-			}
-		}
-	}
+    /**
+     * For convenience, this represents a controller for the subscriptions titled pane.
+     */
+    private SubscriptionsController subscriptionsController = new SubscriptionsController();
 
-	public MqttAsyncConnection getConnection()
-	{
-		return connection;
-	}
+    @FXML
+    private Button newSubButton;
 
-	public void setConnection(MqttAsyncConnection connection)
-	{
-		this.connection = connection;
-	}
+    @FXML
+    private TitledPane publishMessageTitledPane;
 
-	public Tab getTab()
-	{
-		return connectionTab;
-	}
+    @FXML
+    private TitledPane newSubscriptionTitledPane;
 
-	public void setTab(Tab tab)
-	{
-		this.connectionTab = tab;
-	}
+    @FXML
+    private TitledPane scriptedPublicationsTitledPane;
 
-	public TabPane getSubscriptionTabs()
-	{
-		return subscriptionTabs;
-	}
-	
-	public void showTabTile(final boolean pending)
-	{
-		if (pending)
-		{
-			final HBox title = new HBox();
-			title.setAlignment(Pos.CENTER);
-			final ProgressIndicator progressIndicator = new ProgressIndicator();
-			progressIndicator.setMaxSize(15, 15);												
-			title.getChildren().add(progressIndicator);
-			title.getChildren().add(new Label(" " + connection.getName()));
-			connectionTab.setGraphic(title);
-			connectionTab.setText(null);
-		}
-		else if (connection.getConnectionStatus().equals(ConnectionStatus.CONNECTED))
-		{								
-			connectionTab.setGraphic(
-					UiUtils.createSecurityIcons(
-							connection.getProperties().getSSL() != null, 
-							connection.getProperties().getUserCredentials() != null, false));
-			connectionTab.setText(connection.getName());
-		}
-		else
-		{			
-			connectionTab.setGraphic(null);
-			connectionTab.setText(connection.getName());
-		}
-	}
-	
-	public void onConnectionStatusChanged(final ConnectionStatusChangeEvent event)
-	{
-		final ConnectionStatus connectionStatus = event.getConnectionStatus();
-		
-		logger.debug("Updating {} connection status to {}", event.getName(), connectionStatus);		
-		
-		newSubscriptionPaneController.setConnected(false);
-		getNewPublicationPaneController().setConnected(false);
-		
-		for (final BaseMqttSubscription sub : connection.getSubscriptions().values())
-		{
-			if (sub instanceof MqttSubscription)
-			{
-				final MqttConnectionController connectionController = connectionManager.getConnectionControllersMapping().get(connection);
-				final SubscriptionController subscriptionController = connectionManager.getSubscriptionManager(connectionController).getSubscriptionControllersMap().get(sub.getTopic());
-				subscriptionController.updateContextMenu();
-			}
-		}
-		
-		// If the context menu is available and has items in it
-		if (connectionTab.getContextMenu() != null && connectionTab.getContextMenu().getItems().size() > 0)
-		{
-			// TODO: change that to the Specification pattern
-			switch (connectionStatus)
-			{
-				case NOT_CONNECTED:
-					connectionTab.getContextMenu().getItems().get(0).setDisable(false);
-					connectionTab.getContextMenu().getItems().get(2).setDisable(true);										
-					connectionTab.getContextMenu().getItems().get(3).setDisable(false);
-					connectionTab.getContextMenu().getItems().get(5).setDisable(true);
-					showTabTile(false);
-					break;
-				case CONNECTED:					
-					connectionTab.getContextMenu().getItems().get(0).setDisable(true);
-					connectionTab.getContextMenu().getItems().get(2).setDisable(false);
-					connectionTab.getContextMenu().getItems().get(3).setDisable(false);
-					connectionTab.getContextMenu().getItems().get(5).setDisable(false);
-					newSubscriptionPaneController.setConnected(true);
-					getNewPublicationPaneController().setConnected(true);
-					showTabTile(false);
-					break;
-				case CONNECTING:
-					connectionTab.getContextMenu().getItems().get(2).setDisable(true);
-					connectionTab.getContextMenu().getItems().get(0).setDisable(true);					
-					connectionTab.getContextMenu().getItems().get(3).setDisable(true);
-					connectionTab.getContextMenu().getItems().get(5).setDisable(true);
-					showTabTile(true);						
-					break;
-				case DISCONNECTED:
-					connectionTab.getContextMenu().getItems().get(0).setDisable(false);
-					connectionTab.getContextMenu().getItems().get(2).setDisable(true);										
-					connectionTab.getContextMenu().getItems().get(3).setDisable(false);
-					connectionTab.getContextMenu().getItems().get(5).setDisable(true);
-					showTabTile(false);
-					break;
-				case DISCONNECTING:					
-					connectionTab.getContextMenu().getItems().get(0).setDisable(true);
-					connectionTab.getContextMenu().getItems().get(2).setDisable(true);
-					connectionTab.getContextMenu().getItems().get(3).setDisable(false);
-					connectionTab.getContextMenu().getItems().get(5).setDisable(true);
-					showTabTile(false);
-					break;
-				default:
-					break;
-			}
-		}
+    @FXML
+    private TitledPane subscriptionsTitledPane;
 
-		if (connectionTab.getStyleClass().size() > 1)
-		{
-			connectionTab.getStyleClass().remove(1);
-		}
-		connectionTab.getStyleClass().add(MqttStylingUtils.getStyleForMqttConnectionStatus(connectionStatus));
-		
-		DialogUtils.updateConnectionTooltip(connection, tooltip);
-	}
-	
-	public void updateConnectionStats()
-	{
-		for (final SubscriptionController subscriptionController : connectionManager.getSubscriptionManager(this).getSubscriptionControllers())
-		{
-			subscriptionController.updateSubscriptionStats();
-		}
-	}
+    @FXML
+    private TitledPane testCasesTitledPane;
 
-	public StatisticsManager getStatisticsManager()
-	{
-		return statisticsManager;
-	}
+    private TitledPaneStatus publishMessageTitledStatus = new TitledPaneStatus(0);
 
-	public void setStatisticsManager(StatisticsManager statisticsManager)
-	{
-		this.statisticsManager = statisticsManager;
-	}
-	
-	public NewSubscriptionController getNewSubscriptionPaneController()
-	{
-		return newSubscriptionPaneController;
-	}
+    private TitledPaneStatus newSubscriptionTitledStatus = new TitledPaneStatus(3);
 
-	public void setPaneVisiblity(final TitledPaneStatus paneStatus, final PaneVisibilityStatus visibility)
-	{
-		if (paneStatus == testCasesTitledStatus && testCasesPaneController == null 
-				&& (PaneVisibilityStatus.ATTACHED.equals(visibility) || PaneVisibilityStatus.DETACHED.equals(visibility)))
-		{
-			initialiseTestCasesPane();
-		}
-		
-		// Ignore any layout requests when in replay mode
-		if (!replayMode)
-		{
-			paneStatus.setRequestedVisibility(visibility);			
-			updateVisiblePanes();
-			updateMenus();
-		}		
-	}
-	
-	public boolean getDetailedViewVisibility()
-	{
-		return detailedView;
-	}
-	
-	public void setViewVisibility(final boolean detailedView, final boolean basicView)
-	{
-		this.detailedView = detailedView;
-		newSubscriptionPaneController.setViewVisibility(detailedView);
-		getNewPublicationPaneController().setViewVisibility(detailedView);
-		
-		for (final SubscriptionController subscriptionController : connectionManager.getSubscriptionManager(this).getSubscriptionControllers())
-		{
-			subscriptionController.setViewVisibility(detailedView, basicView);
-		}
-	}
-	
-	public void toggleMessagePayloadSize(final boolean resize)
-	{
-		for (final SubscriptionController subscriptionController : connectionManager.getSubscriptionManager(this).getSubscriptionControllers())
-		{
-			subscriptionController.toggleMessagePayloadSize(resize);
-		}
-	}
-	
-	public void toggleDetailedViewVisibility()
-	{
-		newSubscriptionPaneController.toggleDetailedViewVisibility();
-		getNewPublicationPaneController().toggleDetailedViewVisibility();
-		
-		for (final SubscriptionController subscriptionController : connectionManager.getSubscriptionManager(this).getSubscriptionControllers())
-		{
-			subscriptionController.toggleDetailedViewVisibility();
-		}
-	}
-	
-	public void showPanes(final PaneVisibilityStatus showManualPublications, final PaneVisibilityStatus showScriptedPublications, 
-			final PaneVisibilityStatus showNewSubscription, final PaneVisibilityStatus showReceivedMessagesSummary)
-	{
-		// Ignore any layout requests when in replay mode
-		if (!replayMode)
-		{
-			subscriptionsTitledStatus.setRequestedVisibility(showReceivedMessagesSummary);
-			publishMessageTitledStatus.setRequestedVisibility(showManualPublications);
-			scriptedPublicationsTitledStatus.setRequestedVisibility(showScriptedPublications);
-			newSubscriptionTitledStatus.setRequestedVisibility(showNewSubscription);						
-			
-			updateVisiblePanes();
-			updateMenus();
-		}
-	}
-	
-	public void setReplayMode(final boolean value)
-	{
-		replayMode = value;
-	}
-	
-	public void showReplayMode()
-	{	
-		connectionTab.getStyleClass().add("connection-replay");
-				
-		subscriptionsTitledStatus.setRequestedVisibility(PaneVisibilityStatus.ATTACHED);
-		publishMessageTitledStatus.setRequestedVisibility(PaneVisibilityStatus.NOT_VISIBLE);
-		scriptedPublicationsTitledStatus.setRequestedVisibility(PaneVisibilityStatus.NOT_VISIBLE);
-		newSubscriptionTitledStatus.setRequestedVisibility(PaneVisibilityStatus.NOT_VISIBLE);						
-		testCasesTitledStatus.setRequestedVisibility(PaneVisibilityStatus.NOT_VISIBLE);
-		
-		updateVisiblePanes();
-				
-		subscriptionsTitledPane.setText("Logged messages");
-		subscriptionsController.init();
-	}
-	
-	private void updateMenus()
-	{
-		for (final TitledPaneStatus status : paneToStatus.values())
-		{
-			status.updateMenu();
-		}		
-	}
-		
-	private void insertPane(final TitledPaneStatus status)
-	{
-		int insertIndex = splitPane.getItems().size();
-		
-		for (int i = 0; i < splitPane.getItems().size(); i++)
-		{
-			final Node pane = splitPane.getItems().get(i);
-			
-			if (paneToStatus.get(pane).getDisplayIndex() > status.getDisplayIndex())
-			{
-				insertIndex = i;
-				break;
-			}
-		}
-		
-		// logger.info("Inserting at " + insertIndex + "; " + controller);
-		splitPane.getItems().add(insertIndex, status.getController().getTitledPane());
-	}
-	
-	// TODO: this should be moved out to the ViewManager
-	private void updateVisiblePanes()
-	{	
-		for (final TitledPaneStatus status : paneToStatus.values())
-		{	
-			// If no changes, go to next controller...
-			if (status.getVisibility().equals(status.getRequestedVisibility()))
-			{
-				continue;
-			}
-			
-			status.setVisibility(status.getRequestedVisibility());
-			status.getController().updatePane(status.getRequestedVisibility());
-			
-			// If previous value was detached, close the detached window
-			if (status.getPreviousVisibility().equals(PaneVisibilityStatus.DETACHED))
-			{
-				status.getController().getTitledPane().setCollapsible(true);
-				status.getController().getTitledPane().setExpanded(status.isLastExpanded());
-				
-				if (status.getParentWhenDetached().isShowing())
-				{
-					status.getParentWhenDetached().close();
-				}
-			}
-			// If previous value was attached, remove the pane
-			else if (status.getPreviousVisibility().equals(PaneVisibilityStatus.ATTACHED))
-			{
-				// Remove from main window
-				if (splitPane.getItems().contains(status.getController().getTitledPane()))
-				{
-					splitPane.getItems().remove(status.getController().getTitledPane());
-				}
-			}
-			
-			// If the pane should be detached
-			if (status.getVisibility().equals(PaneVisibilityStatus.DETACHED))
-			{				
-				// Add to separate window
-				final Stage stage = DialogFactory.createWindowWithPane(status.getController().getTitledPane(), splitPane.getScene(), 
-						connection.getName(), 0);
-				status.setParentWhenDetached(stage);
-				status.setLastExpanded(status.getController().getTitledPane().isExpanded());
-				stage.setOnCloseRequest(new EventHandler<WindowEvent>()
-				{					
-					@Override
-					public void handle(WindowEvent event)
-					{
-						status.setRequestedVisibility(status.getPreviousVisibility());						
-						updateVisiblePanes();
-						updateMenus();
-						updateMinHeights();
-					}
-				});
-				
-				status.getController().getTitledPane().setExpanded(true);
-				status.getController().getTitledPane().setCollapsible(false);
-				updateMinHeights();
-				
-				final double paneMinHeight = status.getController().getTitledPane().getMinHeight(); 
-				
-				stage.setMinHeight(paneMinHeight > MIN_WINDOW_HIGHT ? paneMinHeight : MIN_WINDOW_HIGHT);
-				stage.setMinWidth(MIN_WINDOW_WIDTH);
-				stage.show();								
-			}
-			// If set to be shown
-			else if (status.getVisibility().equals(PaneVisibilityStatus.ATTACHED))
-			{
-				// logger.info("Show; contains = " + splitPane.getItems().contains(controller.getTitledPane()));
-				
-				// Show
-				if (!splitPane.getItems().contains(status.getController().getTitledPane()))
-				{
-					insertPane(status);
-				}
-			}
-		}
-	}
-	
-	public TabStatus getTabStatus()
-	{		
-		return tabStatus;
-	}	
+    private TitledPaneStatus scriptedPublicationsTitledStatus = new TitledPaneStatus(1);
 
-	/**
-	 * Sets the pane status.
-	 * 
-	 * @param paneStatus the paneStatus to set
-	 */
-	public void setTabStatus(TabStatus paneStatus)
-	{
-		this.tabStatus = paneStatus;
-	}
+    private TitledPaneStatus subscriptionsTitledStatus = new TitledPaneStatus(4);
 
-	@Override
-	public void refreshStatus()
-	{
-		if (connection != null)
-		{
-			
-			onConnectionStatusChanged(new ConnectionStatusChangeEvent(connection, connection.getName(), connection.getId(), connection.getConnectionStatus()));
-		}
-	}
+    private TitledPaneStatus testCasesTitledStatus = new TitledPaneStatus(2);
 
-	/**
-	 * Gets the new publication pane controller.
-	 * 
-	 * @return the newPublicationPaneController
-	 */
-	public NewPublicationController getNewPublicationPaneController()
-	{
-		return newPublicationPaneController;
-	}
+    @FXML
+    private TabPane subscriptionTabs;
 
-	/**
-	 * Gets the subscriptions controller.
-	 * 
-	 * @return the subscriptionsController
-	 */
-	public SubscriptionsController getSubscriptionsController()
-	{
-		return subscriptionsController;
-	}
+    private MqttAsyncConnection connection;
 
-	/**
-	 * Gets the publication scripts controller.
-	 * 
-	 * @return the publicationScriptsPaneController
-	 */
-	public MqttPublicationScriptsController getPublicationScriptsPaneController()
-	{
-		return publicationScriptsPaneController;
-	}
+    private Tab connectionTab;
 
-	public CheckMenuItem getResizeMessageContentMenu()
-	{
-		return resizeMessageContentMenu;
-	}
+    private Tooltip tooltip;
 
-	public TestCasesExecutionController getTestCasesPaneController()
-	{
-		return testCasesPaneController;
-	}
+    private StatisticsManager statisticsManager;
 
-	public TitledPaneStatus getNewPublicationPaneStatus()
-	{
-		return publishMessageTitledStatus;
-	}
+    private MqttConnectionViewManager connectionManager;
 
-	public TitledPaneStatus getPublicationScriptsPaneStatus()
-	{
-		return scriptedPublicationsTitledStatus;
-	}
+    private IKBus eventBus;
 
-	public TitledPaneStatus getNewSubscriptionPaneStatus()
-	{
-		return newSubscriptionTitledStatus;
-	}
+    private Map<TitledPane, TitledPaneStatus> paneToStatus = new HashMap<>();
 
-	public TitledPaneStatus getSubscriptionsStatus()
-	{
-		return subscriptionsTitledStatus;
-	}
+    private boolean detailedView;
 
-	public TitledPaneStatus getTestCasesPaneStatus()
-	{
-		return testCasesTitledStatus;
-	}
-	
-	public void setEventBus(final IKBus eventBus)
-	{
-		this.eventBus = eventBus;
-	}
+    private boolean replayMode;
+
+    private TabStatus tabStatus;
+
+    private CheckMenuItem resizeMessageContentMenu = new CheckMenuItem();
+
+    private ChangeListener<Boolean> createChangeListener() {
+        return new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean arg1, Boolean arg2) {
+                updateMinHeights();
+            }
+        };
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        newSubButton.setTooltip(new Tooltip("Create new subscription [" + MqttViewManager.newSubscription.getDisplayText() + "]"));
+        final MenuItem attach = new MenuItem("Show attached");
+        final MqttConnectionController controller = this;
+        attach.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showNewSubscription(PaneVisibilityStatus.ATTACHED, controller);
+            }
+        });
+        newSubButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (MouseButton.PRIMARY.equals(event.getButton())) {
+                    showNewSubscription(PaneVisibilityStatus.DETACHED, controller);
+                } else {
+                    newSubButton.getContextMenu().show(newSubButton.getScene().getWindow());
+                }
+            }
+        });
+
+        newSubButton.setContextMenu(new ContextMenu(attach));
+        newSubButton.setDisable(false);
+    }
+
+    private void showNewSubscription(final PaneVisibilityStatus status, final MqttConnectionController connectionController) {
+        eventBus.publish(new ShowNewMqttSubscriptionWindowEvent(connectionController,
+                status,
+                connectionController.getNewSubscriptionPaneStatus().getVisibility()));
+    }
+
+    @FXML
+    public void newSubscription() {
+        final Tab selectedTab = connectionTab;
+        final MqttConnectionController controller = (MqttConnectionController) connectionManager.getControllerForTab(selectedTab);
+
+        if (controller != null) {
+            eventBus.publish(new ShowNewMqttSubscriptionWindowEvent(
+                    controller,
+                    PaneVisibilityStatus.DETACHED,
+                    controller.getNewSubscriptionPaneStatus().getVisibility()));
+        }
+    }
+
+    public void init() {
+        publishMessageTitledStatus.setController(newPublicationPaneController);
+        newSubscriptionTitledStatus.setController(newSubscriptionPaneController);
+        scriptedPublicationsTitledStatus.setController(publicationScriptsPaneController);
+        subscriptionsTitledStatus.setController(subscriptionsController);
+        testCasesTitledStatus.setController(testCasesPaneController);
+
+        subscriptionsTitledPane.expandedProperty().addListener(createChangeListener());
+
+        // panes.put(subscriptionsController, true);
+        subscriptionsTitledStatus.setVisibility(PaneVisibilityStatus.ATTACHED);
+        paneToStatus.put(subscriptionsTitledPane, subscriptionsTitledStatus);
+
+        subscriptionsController.setTitledPane(subscriptionsTitledPane);
+        subscriptionsController.setConnectionController(this);
+        subscriptionsController.init();
+
+        if (!replayMode) {
+            publishMessageTitledPane.expandedProperty().addListener(createChangeListener());
+            scriptedPublicationsTitledPane.expandedProperty().addListener(createChangeListener());
+            newSubscriptionTitledPane.expandedProperty().addListener(createChangeListener());
+
+            scriptedPublicationsTitledPane.setExpanded(false);
+
+            publishMessageTitledStatus.setVisibility(PaneVisibilityStatus.ATTACHED);
+            scriptedPublicationsTitledStatus.setVisibility(PaneVisibilityStatus.ATTACHED);
+            newSubscriptionTitledStatus.setVisibility(PaneVisibilityStatus.ATTACHED);
+            testCasesTitledStatus.setVisibility(PaneVisibilityStatus.NOT_VISIBLE);
+
+            paneToStatus.put(publishMessageTitledPane, publishMessageTitledStatus);
+            paneToStatus.put(scriptedPublicationsTitledPane, scriptedPublicationsTitledStatus);
+            paneToStatus.put(newSubscriptionTitledPane, newSubscriptionTitledStatus);
+
+            newPublicationPaneController.setConnection(connection);
+            newPublicationPaneController.setScriptManager(connection.getScriptManager());
+            newPublicationPaneController.setEventBus(eventBus);
+            newPublicationPaneController.setConnectionController(this);
+            newPublicationPaneController.setTitledPane(publishMessageTitledPane);
+            newPublicationPaneController.init();
+
+            newSubscriptionPaneController.setConnection(connection);
+            newSubscriptionPaneController.setConnectionController(this);
+            newSubscriptionPaneController.setEventBus(eventBus);
+            newSubscriptionPaneController.setConnectionManager(connectionManager);
+            newSubscriptionPaneController.setTitledPane(newSubscriptionTitledPane);
+            newSubscriptionPaneController.init();
+
+            publicationScriptsPaneController.setConnection(connection);
+            publicationScriptsPaneController.setEventBus(eventBus);
+            publicationScriptsPaneController.setPaneVisibilityManager(this);
+            publicationScriptsPaneController.setTitledPane(scriptedPublicationsTitledPane);
+            publicationScriptsPaneController.init();
+
+            tooltip = new Tooltip();
+            connectionTab.setTooltip(tooltip);
+        } else {
+            // If in replay more, remote the panes from the split pane altogether
+            // TODO: don't add them in the first place?
+            splitPane.getItems().remove(publishMessageTitledPane);
+            splitPane.getItems().remove(scriptedPublicationsTitledPane);
+            splitPane.getItems().remove(newSubscriptionTitledPane);
+            splitPane.getItems().remove(testCasesTitledPane);
+        }
+
+        updateVisiblePanes();
+        updateMinHeights();
+    }
+
+    private void initialiseTestCasesPane() {
+        if (testCasesPaneController == null) {
+            final FXMLLoader loader = FxmlUtils.createFxmlLoaderForProjectFile("TestCasesExecutionPane.fxml");
+            final AnchorPane testCasesPane = FxmlUtils.loadAnchorPane(loader);
+
+            testCasesTitledPane = new TitledPane();
+            testCasesTitledPane.setText("Test cases");
+            testCasesTitledPane.setContent(testCasesPane);
+            testCasesTitledPane.expandedProperty().addListener(createChangeListener());
+            testCasesTitledPane.setExpanded(false);
+
+            testCasesPaneController = loader.getController();
+            final InteractiveMqttScriptManager scriptManager = new InteractiveMqttScriptManager(eventBus);
+            scriptManager.setConnection(connection);
+            testCasesPaneController.setScriptManager(scriptManager);
+
+            testCasesPaneController.setTitledPane(testCasesTitledPane);
+            testCasesPaneController.init();
+            testCasesPaneController.setSettingsButton(MqttViewManager.createTitleButtons(testCasesPaneController, new AnchorPane(), this));
+
+            testCasesTitledStatus.setController(testCasesPaneController);
+
+            paneToStatus.put(testCasesTitledPane, testCasesTitledStatus);
+
+            logger.debug("Test cases pane initialised!");
+        }
+    }
+
+    @Override
+	public Map<TitledPane, TitledPaneStatus> getPaneToStatusMapping() {
+        return paneToStatus;
+    }
+
+    public void setConnectionManager(final MqttConnectionViewManager connectionManager) {
+        this.connectionManager = connectionManager;
+    }
+
+    public void updateMinHeights() {
+        if (publishMessageTitledPane.isExpanded()) {
+            publishMessageTitledPane.setMinHeight(PUBLICATION_PANE_MIN_EXPANDED_HEIGHT);
+        } else {
+            publishMessageTitledPane.setMinHeight(MIN_COLLAPSED_PANE_HEIGHT);
+        }
+
+        if (scriptedPublicationsTitledPane.isExpanded()) {
+            scriptedPublicationsTitledPane.setMinHeight(SCRIPTED_PUBLICATION_PANE_MIN_EXPANDED_HEIGHT);
+        } else {
+            scriptedPublicationsTitledPane.setMinHeight(MIN_COLLAPSED_PANE_HEIGHT);
+        }
+
+        if (newSubscriptionTitledPane.isExpanded()) {
+            newSubscriptionTitledPane.setMinHeight(SUBSCRIPTION_PANE_MIN_EXPANDED_HEIGHT);
+            newSubscriptionTitledPane.setMaxHeight(SUBSCRIPTION_PANE_MIN_EXPANDED_HEIGHT);
+        } else {
+            newSubscriptionTitledPane.setMinHeight(MIN_COLLAPSED_PANE_HEIGHT);
+            newSubscriptionTitledPane.setMaxHeight(MIN_COLLAPSED_PANE_HEIGHT);
+        }
+
+        if (testCasesTitledPane != null) {
+            if (testCasesTitledPane.isExpanded()) {
+                testCasesTitledPane.setMinHeight(TEST_CASES_PANE_MIN_EXPANDED_HEIGHT);
+            } else {
+                testCasesTitledPane.setMinHeight(MIN_COLLAPSED_PANE_HEIGHT);
+            }
+        }
+    }
+
+    public MqttAsyncConnection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(MqttAsyncConnection connection) {
+        this.connection = connection;
+    }
+
+    @Override
+	public Tab getTab() {
+        return connectionTab;
+    }
+
+    @Override
+	public void setTab(Tab tab) {
+        this.connectionTab = tab;
+    }
+
+    public TabPane getSubscriptionTabs() {
+        return subscriptionTabs;
+    }
+
+    public void showTabTile(final boolean pending) {
+        if (pending) {
+            final HBox title = new HBox();
+            title.setAlignment(Pos.CENTER);
+            final ProgressIndicator progressIndicator = new ProgressIndicator();
+            progressIndicator.setMaxSize(15, 15);
+            title.getChildren().add(progressIndicator);
+            title.getChildren().add(new Label(" " + connection.getName()));
+            connectionTab.setGraphic(title);
+            connectionTab.setText(null);
+        } else if (connection.getConnectionStatus().equals(ConnectionStatus.CONNECTED)) {
+            connectionTab.setGraphic(
+                    UiUtils.createSecurityIcons(
+                            connection.getProperties().getSSL() != null,
+                            connection.getProperties().getUserCredentials() != null, false));
+            connectionTab.setText(connection.getName());
+        } else {
+            connectionTab.setGraphic(null);
+            connectionTab.setText(connection.getName());
+        }
+    }
+
+    public void onConnectionStatusChanged(final ConnectionStatusChangeEvent event) {
+        final ConnectionStatus connectionStatus = event.getConnectionStatus();
+
+        logger.debug("Updating {} connection status to {}", event.getName(), connectionStatus);
+
+        newSubscriptionPaneController.setConnected(false);
+        getNewPublicationPaneController().setConnected(false);
+
+        for (final BaseMqttSubscription sub : connection.getSubscriptions().values()) {
+            if (sub instanceof MqttSubscription) {
+                final MqttConnectionController connectionController = connectionManager.getConnectionControllersMapping().get(connection);
+                final SubscriptionController subscriptionController = connectionManager.getSubscriptionManager(connectionController).getSubscriptionControllersMap().get(sub.getTopic());
+                subscriptionController.updateContextMenu();
+            }
+        }
+
+        // If the context menu is available and has items in it
+        if (connectionTab.getContextMenu() != null && connectionTab.getContextMenu().getItems().size() > 0) {
+            // TODO: change that to the Specification pattern
+            switch (connectionStatus) {
+                case NOT_CONNECTED:
+                    connectionTab.getContextMenu().getItems().get(0).setDisable(false);
+                    connectionTab.getContextMenu().getItems().get(2).setDisable(true);
+                    connectionTab.getContextMenu().getItems().get(3).setDisable(false);
+                    connectionTab.getContextMenu().getItems().get(5).setDisable(true);
+                    showTabTile(false);
+                    break;
+                case CONNECTED:
+                    connectionTab.getContextMenu().getItems().get(0).setDisable(true);
+                    connectionTab.getContextMenu().getItems().get(2).setDisable(false);
+                    connectionTab.getContextMenu().getItems().get(3).setDisable(false);
+                    connectionTab.getContextMenu().getItems().get(5).setDisable(false);
+                    newSubscriptionPaneController.setConnected(true);
+                    getNewPublicationPaneController().setConnected(true);
+                    showTabTile(false);
+                    break;
+                case CONNECTING:
+                    connectionTab.getContextMenu().getItems().get(2).setDisable(true);
+                    connectionTab.getContextMenu().getItems().get(0).setDisable(true);
+                    connectionTab.getContextMenu().getItems().get(3).setDisable(true);
+                    connectionTab.getContextMenu().getItems().get(5).setDisable(true);
+                    showTabTile(true);
+                    break;
+                case DISCONNECTED:
+                    connectionTab.getContextMenu().getItems().get(0).setDisable(false);
+                    connectionTab.getContextMenu().getItems().get(2).setDisable(true);
+                    connectionTab.getContextMenu().getItems().get(3).setDisable(false);
+                    connectionTab.getContextMenu().getItems().get(5).setDisable(true);
+                    showTabTile(false);
+                    break;
+                case DISCONNECTING:
+                    connectionTab.getContextMenu().getItems().get(0).setDisable(true);
+                    connectionTab.getContextMenu().getItems().get(2).setDisable(true);
+                    connectionTab.getContextMenu().getItems().get(3).setDisable(false);
+                    connectionTab.getContextMenu().getItems().get(5).setDisable(true);
+                    showTabTile(false);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (connectionTab.getStyleClass().size() > 1) {
+            connectionTab.getStyleClass().remove(1);
+        }
+        connectionTab.getStyleClass().add(MqttStylingUtils.getStyleForMqttConnectionStatus(connectionStatus));
+
+        DialogUtils.updateConnectionTooltip(connection, tooltip);
+    }
+
+    public void updateConnectionStats() {
+        for (final SubscriptionController subscriptionController : connectionManager.getSubscriptionManager(this).getSubscriptionControllers()) {
+            subscriptionController.updateSubscriptionStats();
+        }
+    }
+
+    public StatisticsManager getStatisticsManager() {
+        return statisticsManager;
+    }
+
+    public void setStatisticsManager(StatisticsManager statisticsManager) {
+        this.statisticsManager = statisticsManager;
+    }
+
+    public NewSubscriptionController getNewSubscriptionPaneController() {
+        return newSubscriptionPaneController;
+    }
+
+    public void setPaneVisiblity(final TitledPaneStatus paneStatus, final PaneVisibilityStatus visibility) {
+        if (paneStatus == testCasesTitledStatus && testCasesPaneController == null
+                && (PaneVisibilityStatus.ATTACHED.equals(visibility) || PaneVisibilityStatus.DETACHED.equals(visibility))) {
+            initialiseTestCasesPane();
+        }
+
+        // Ignore any layout requests when in replay mode
+        if (!replayMode) {
+            paneStatus.setRequestedVisibility(visibility);
+            updateVisiblePanes();
+            updateMenus();
+        }
+    }
+
+    public boolean getDetailedViewVisibility() {
+        return detailedView;
+    }
+
+    public void setViewVisibility(final boolean detailedView, final boolean basicView) {
+        this.detailedView = detailedView;
+        newSubscriptionPaneController.setViewVisibility(detailedView);
+        getNewPublicationPaneController().setViewVisibility(detailedView);
+
+        for (final SubscriptionController subscriptionController : connectionManager.getSubscriptionManager(this).getSubscriptionControllers()) {
+            subscriptionController.setViewVisibility(detailedView, basicView);
+        }
+    }
+
+    public void toggleMessagePayloadSize(final boolean resize) {
+        for (final SubscriptionController subscriptionController : connectionManager.getSubscriptionManager(this).getSubscriptionControllers()) {
+            subscriptionController.toggleMessagePayloadSize(resize);
+        }
+    }
+
+    public void toggleDetailedViewVisibility() {
+        newSubscriptionPaneController.toggleDetailedViewVisibility();
+        getNewPublicationPaneController().toggleDetailedViewVisibility();
+
+        for (final SubscriptionController subscriptionController : connectionManager.getSubscriptionManager(this).getSubscriptionControllers()) {
+            subscriptionController.toggleDetailedViewVisibility();
+        }
+    }
+
+    public void showPanes(final PaneVisibilityStatus showManualPublications, final PaneVisibilityStatus showScriptedPublications,
+                          final PaneVisibilityStatus showNewSubscription, final PaneVisibilityStatus showReceivedMessagesSummary) {
+        // Ignore any layout requests when in replay mode
+        if (!replayMode) {
+            subscriptionsTitledStatus.setRequestedVisibility(showReceivedMessagesSummary);
+            publishMessageTitledStatus.setRequestedVisibility(showManualPublications);
+            scriptedPublicationsTitledStatus.setRequestedVisibility(showScriptedPublications);
+            newSubscriptionTitledStatus.setRequestedVisibility(showNewSubscription);
+
+            updateVisiblePanes();
+            updateMenus();
+        }
+    }
+
+    public void setReplayMode(final boolean value) {
+        replayMode = value;
+    }
+
+    public void showReplayMode() {
+        connectionTab.getStyleClass().add("connection-replay");
+
+        subscriptionsTitledStatus.setRequestedVisibility(PaneVisibilityStatus.ATTACHED);
+        publishMessageTitledStatus.setRequestedVisibility(PaneVisibilityStatus.NOT_VISIBLE);
+        scriptedPublicationsTitledStatus.setRequestedVisibility(PaneVisibilityStatus.NOT_VISIBLE);
+        newSubscriptionTitledStatus.setRequestedVisibility(PaneVisibilityStatus.NOT_VISIBLE);
+        testCasesTitledStatus.setRequestedVisibility(PaneVisibilityStatus.NOT_VISIBLE);
+
+        updateVisiblePanes();
+
+        subscriptionsTitledPane.setText("Logged messages");
+        subscriptionsController.init();
+    }
+
+    private void updateMenus() {
+        for (final TitledPaneStatus status : paneToStatus.values()) {
+            status.updateMenu();
+        }
+    }
+
+    private void insertPane(final TitledPaneStatus status) {
+        int insertIndex = splitPane.getItems().size();
+
+        for (int i = 0; i < splitPane.getItems().size(); i++) {
+            final Node pane = splitPane.getItems().get(i);
+
+            if (paneToStatus.get(pane).getDisplayIndex() > status.getDisplayIndex()) {
+                insertIndex = i;
+                break;
+            }
+        }
+
+        // logger.info("Inserting at " + insertIndex + "; " + controller);
+        splitPane.getItems().add(insertIndex, status.getController().getTitledPane());
+    }
+
+    // TODO: this should be moved out to the ViewManager
+    private void updateVisiblePanes() {
+        for (final TitledPaneStatus status : paneToStatus.values()) {
+            // If no changes, go to next controller...
+            if (status.getVisibility().equals(status.getRequestedVisibility())) {
+                continue;
+            }
+
+            status.setVisibility(status.getRequestedVisibility());
+            status.getController().updatePane(status.getRequestedVisibility());
+
+            // If previous value was detached, close the detached window
+            if (status.getPreviousVisibility().equals(PaneVisibilityStatus.DETACHED)) {
+                status.getController().getTitledPane().setCollapsible(true);
+                status.getController().getTitledPane().setExpanded(status.isLastExpanded());
+
+                if (status.getParentWhenDetached().isShowing()) {
+                    status.getParentWhenDetached().close();
+                }
+            }
+            // If previous value was attached, remove the pane
+            else if (status.getPreviousVisibility().equals(PaneVisibilityStatus.ATTACHED)) {
+                // Remove from main window
+                if (splitPane.getItems().contains(status.getController().getTitledPane())) {
+                    splitPane.getItems().remove(status.getController().getTitledPane());
+                }
+            }
+
+            // If the pane should be detached
+            if (status.getVisibility().equals(PaneVisibilityStatus.DETACHED)) {
+                // Add to separate window
+                final Stage stage = DialogFactory.createWindowWithPane(status.getController().getTitledPane(), splitPane.getScene(),
+                        connection.getName(), 0);
+                status.setParentWhenDetached(stage);
+                status.setLastExpanded(status.getController().getTitledPane().isExpanded());
+                stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent event) {
+                        status.setRequestedVisibility(status.getPreviousVisibility());
+                        updateVisiblePanes();
+                        updateMenus();
+                        updateMinHeights();
+                    }
+                });
+
+                status.getController().getTitledPane().setExpanded(true);
+                status.getController().getTitledPane().setCollapsible(false);
+                updateMinHeights();
+
+                final double paneMinHeight = status.getController().getTitledPane().getMinHeight();
+
+                stage.setMinHeight(paneMinHeight > MIN_WINDOW_HIGHT ? paneMinHeight : MIN_WINDOW_HIGHT);
+                stage.setMinWidth(MIN_WINDOW_WIDTH);
+                stage.show();
+            }
+            // If set to be shown
+            else if (status.getVisibility().equals(PaneVisibilityStatus.ATTACHED)) {
+                // logger.info("Show; contains = " + splitPane.getItems().contains(controller.getTitledPane()));
+
+                // Show
+                if (!splitPane.getItems().contains(status.getController().getTitledPane())) {
+                    insertPane(status);
+                }
+            }
+        }
+    }
+
+    @Override
+	public TabStatus getTabStatus() {
+        return tabStatus;
+    }
+
+    /**
+     * Sets the pane status.
+     *
+     * @param paneStatus the paneStatus to set
+     */
+    @Override
+	public void setTabStatus(TabStatus paneStatus) {
+        this.tabStatus = paneStatus;
+    }
+
+    @Override
+    public void refreshStatus() {
+        if (connection != null) {
+
+            onConnectionStatusChanged(new ConnectionStatusChangeEvent(connection, connection.getName(), connection.getId(), connection.getConnectionStatus()));
+        }
+    }
+
+    /**
+     * Gets the new publication pane controller.
+     *
+     * @return the newPublicationPaneController
+     */
+    public NewPublicationController getNewPublicationPaneController() {
+        return newPublicationPaneController;
+    }
+
+    /**
+     * Gets the subscriptions controller.
+     *
+     * @return the subscriptionsController
+     */
+    public SubscriptionsController getSubscriptionsController() {
+        return subscriptionsController;
+    }
+
+    /**
+     * Gets the publication scripts controller.
+     *
+     * @return the publicationScriptsPaneController
+     */
+    public MqttPublicationScriptsController getPublicationScriptsPaneController() {
+        return publicationScriptsPaneController;
+    }
+
+    public CheckMenuItem getResizeMessageContentMenu() {
+        return resizeMessageContentMenu;
+    }
+
+    public TestCasesExecutionController getTestCasesPaneController() {
+        return testCasesPaneController;
+    }
+
+    public TitledPaneStatus getNewPublicationPaneStatus() {
+        return publishMessageTitledStatus;
+    }
+
+    public TitledPaneStatus getPublicationScriptsPaneStatus() {
+        return scriptedPublicationsTitledStatus;
+    }
+
+    public TitledPaneStatus getNewSubscriptionPaneStatus() {
+        return newSubscriptionTitledStatus;
+    }
+
+    public TitledPaneStatus getSubscriptionsStatus() {
+        return subscriptionsTitledStatus;
+    }
+
+    public TitledPaneStatus getTestCasesPaneStatus() {
+        return testCasesTitledStatus;
+    }
+
+    public void setEventBus(final IKBus eventBus) {
+        this.eventBus = eventBus;
+    }
 }

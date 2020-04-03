@@ -65,6 +65,7 @@
 		                        <RadioMenuItem fx:id="detailedPerspective" mnemonicParsing="false" onAction="#showPerspective" text="Detailed (publications and subscriptions)" toggleGroup="$perspective" />
 								<RadioMenuItem fx:id="spyPerspective" mnemonicParsing="false" onAction="#showPerspective" text="Baby Spy (simplified subscriptions only)" toggleGroup="$perspective" />
 								<RadioMenuItem fx:id="superSpyPerspective" mnemonicParsing="false" onAction="#showPerspective" text="Super Spy (subscriptions only)" toggleGroup="$perspective" />
+								<RadioMenuItem fx:id="aiBoxPerspective" mnemonicParsing="false" onAction="#showPerspective" text="AiBox视图" toggleGroup="$perspective" />
 							</items>
 						</Menu>
 						

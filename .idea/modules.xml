@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mqtt-spy/mqtt-spy.iml" filepath="$PROJECT_DIR$/mqtt-spy/mqtt-spy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mqtt-spy-common/mqtt-spy-common.iml" filepath="$PROJECT_DIR$/mqtt-spy-common/mqtt-spy-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mqtt-spy-daemon/mqtt-spy-daemon.iml" filepath="$PROJECT_DIR$/mqtt-spy-daemon/mqtt-spy-daemon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mqtt-spy-pom.iml" filepath="$PROJECT_DIR$/mqtt-spy-pom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spy-common/spy-common.iml" filepath="$PROJECT_DIR$/spy-common/spy-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spy-common-ui/spy-common-ui.iml" filepath="$PROJECT_DIR$/spy-common-ui/spy-common-ui.iml" />
+    </modules>
+  </component>
+</project>

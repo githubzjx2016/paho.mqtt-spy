@@ -1,0 +1,1794 @@
+2020-04-03 10:01:54,542 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 10:01:54,778 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 10:01:57,989 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 10:02:31,509 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (120.25.61.215 -> tcp://120.25.61.215)
+2020-04-03 10:02:33,631 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 10:02:34,008 INFO  [JavaFX Application Thread     ] [NewSubscriptionController     ]  - Subscribing to BT180806B
+2020-04-03 10:02:34,008 INFO  [JavaFX Application Thread     ] [MqttSubscriptionViewManager   ]  - Creating subscription for BT180806B
+2020-04-03 10:02:34,235 INFO  [JavaFX Application Thread     ] [NewSubscriptionController     ]  - Subscribing to BT180806A
+2020-04-03 10:02:34,235 INFO  [JavaFX Application Thread     ] [MqttSubscriptionViewManager   ]  - Creating subscription for BT180806A
+2020-04-03 10:02:34,510 INFO  [mqtt-spy [ConnectionRunnable for 120.25.61.215]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java131808816] to server [[tcp://120.25.61.215]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 10:02:34,905 INFO  [MQTT Call: java131808816      ] [MqttConnectionResultHandler   ]  - 120.25.61.215 connected
+2020-04-03 10:02:35,169 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 10:02:55,502 INFO  [JavaFX Application Thread     ] [BaseMqttConnection            ]  - Subscribed to BT180806B
+2020-04-03 10:04:13,789 INFO  [JavaFX Application Thread     ] [MqttAsyncConnection           ]  - Publishing message on topic "BT180806B". Payload size = "3"
+2020-04-03 10:09:50,145 INFO  [JavaFX Application Thread     ] [BaseMqttConnection            ]  - Successfully unsubscribed from BT180806B
+2020-04-03 10:09:50,147 INFO  [JavaFX Application Thread     ] [MqttConnectionWithReconnection]  - Disconnecting java131808816 from [tcp://120.25.61.215]
+2020-04-03 10:09:50,156 INFO  [MQTT Disc: java131808816      ] [MqttDisconnectionResultHandler]  - 120.25.61.215 disconnected
+2020-04-03 10:10:07,224 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 10:10:07,408 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 10:10:09,138 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (120.25.61.215 -> tcp://120.25.61.215)
+2020-04-03 10:10:10,831 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 10:10:10,980 INFO  [JavaFX Application Thread     ] [NewSubscriptionController     ]  - Subscribing to BT180806B
+2020-04-03 10:10:10,981 INFO  [JavaFX Application Thread     ] [MqttSubscriptionViewManager   ]  - Creating subscription for BT180806B
+2020-04-03 10:10:11,137 INFO  [JavaFX Application Thread     ] [NewSubscriptionController     ]  - Subscribing to BT180806A
+2020-04-03 10:10:11,137 INFO  [JavaFX Application Thread     ] [MqttSubscriptionViewManager   ]  - Creating subscription for BT180806A
+2020-04-03 10:10:11,483 INFO  [mqtt-spy [ConnectionRunnable for 120.25.61.215]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java131808816] to server [[tcp://120.25.61.215]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 10:10:11,646 INFO  [MQTT Call: java131808816      ] [MqttConnectionResultHandler   ]  - 120.25.61.215 connected
+2020-04-03 10:10:12,205 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 10:10:12,242 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 10:11:52,665 INFO  [JavaFX Application Thread     ] [MqttConnectionWithReconnection]  - Disconnecting java131808816 from [tcp://120.25.61.215]
+2020-04-03 10:11:52,669 INFO  [MQTT Disc: java131808816      ] [MqttDisconnectionResultHandler]  - 120.25.61.215 disconnected
+2020-04-03 11:00:32,761 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 11:00:33,038 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 11:00:37,999 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 11:00:41,647 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (192.168.1.205 -> tcp://192.168.1.205)
+2020-04-03 11:00:43,654 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 11:00:44,484 INFO  [mqtt-spy [ConnectionRunnable for 192.168.1.205]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java150712081] to server [[tcp://192.168.1.205]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 11:00:44,697 INFO  [MQTT Call: java150712081      ] [MqttConnectionResultHandler   ]  - 192.168.1.205 connected
+2020-04-03 11:00:44,763 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 11:01:11,603 INFO  [JavaFX Application Thread     ] [NewSubscriptionController     ]  - Subscribing to 123
+2020-04-03 11:01:11,603 INFO  [JavaFX Application Thread     ] [MqttSubscriptionViewManager   ]  - Creating subscription for 123
+2020-04-03 11:01:11,752 INFO  [JavaFX Application Thread     ] [BaseMqttConnection            ]  - Subscribed to 123
+2020-04-03 11:13:10,931 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 11:13:11,395 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 11:13:15,226 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 11:13:34,688 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (192.168.1.205 -> tcp://192.168.1.205)
+2020-04-03 11:13:36,480 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 11:13:37,491 INFO  [mqtt-spy [ConnectionRunnable for 192.168.1.205]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java150712081] to server [[tcp://192.168.1.205]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 11:13:37,644 INFO  [MQTT Call: java150712081      ] [MqttConnectionResultHandler   ]  - 192.168.1.205 connected
+2020-04-03 11:13:37,692 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 11:31:33,880 INFO  [JavaFX Application Thread     ] [MqttConnectionWithReconnection]  - Disconnecting java150712081 from [tcp://192.168.1.205]
+2020-04-03 11:31:33,885 INFO  [MQTT Disc: java150712081      ] [MqttDisconnectionResultHandler]  - 192.168.1.205 disconnected
+2020-04-03 11:31:49,000 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 11:31:49,258 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 11:31:53,713 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 11:32:17,919 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (192.168.1.205 -> tcp://192.168.1.205)
+2020-04-03 11:32:19,057 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 11:32:19,808 INFO  [mqtt-spy [ConnectionRunnable for 192.168.1.205]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java150712081] to server [[tcp://192.168.1.205]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 11:32:19,833 INFO  [MQTT Call: java150712081      ] [MqttConnectionResultHandler   ]  - 192.168.1.205 connected
+2020-04-03 11:32:19,859 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 11:32:38,171 INFO  [JavaFX Application Thread     ] [NewSubscriptionController     ]  - Subscribing to 123
+2020-04-03 11:32:38,171 INFO  [JavaFX Application Thread     ] [MqttSubscriptionViewManager   ]  - Creating subscription for 123
+2020-04-03 11:32:38,293 INFO  [JavaFX Application Thread     ] [BaseMqttConnection            ]  - Subscribed to 123
+2020-04-03 11:33:22,944 INFO  [JavaFX Application Thread     ] [BaseMqttConnection            ]  - Successfully unsubscribed from 123
+2020-04-03 11:33:22,944 INFO  [JavaFX Application Thread     ] [MqttConnectionWithReconnection]  - Disconnecting java150712081 from [tcp://192.168.1.205]
+2020-04-03 11:33:44,182 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 11:33:44,337 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 11:33:49,935 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 11:33:56,470 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (192.168.1.205 -> tcp://192.168.1.205)
+2020-04-03 11:33:57,621 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 11:33:58,260 INFO  [mqtt-spy [ConnectionRunnable for 192.168.1.205]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java150712081] to server [[tcp://192.168.1.205]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 11:33:58,302 INFO  [MQTT Call: java150712081      ] [MqttConnectionResultHandler   ]  - 192.168.1.205 connected
+2020-04-03 11:33:58,419 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 15:16:51,084 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 15:16:51,290 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 15:16:57,601 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 15:16:59,438 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (192.168.1.205 -> tcp://192.168.1.205)
+2020-04-03 15:17:01,449 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 15:17:02,344 INFO  [mqtt-spy [ConnectionRunnable for 192.168.1.205]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java150712081] to server [[tcp://192.168.1.205]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 15:17:02,464 INFO  [MQTT Call: java150712081      ] [MqttConnectionResultHandler   ]  - 192.168.1.205 connected
+2020-04-03 15:17:02,537 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 15:17:33,007 INFO  [JavaFX Application Thread     ] [NewSubscriptionController     ]  - Subscribing to server
+2020-04-03 15:17:33,008 INFO  [JavaFX Application Thread     ] [MqttSubscriptionViewManager   ]  - Creating subscription for server
+2020-04-03 15:17:33,177 INFO  [JavaFX Application Thread     ] [BaseMqttConnection            ]  - Subscribed to server
+2020-04-03 15:29:19,224 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Plain, 123, default, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - HEX decoder, 123, default-hexDecoder, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - HEX encoder, 123, default-hexEncoder, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Base64 decoder, 123, default-base64Decoder, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Base64 encoder, 123, default-base64Encoder, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Pretty JSON, 123, defaultscript-pretty-json, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Pretty XML, 123, defaultscript-pretty-xml, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Eclipse Kura, 123, defaultscript-eclipse-kura, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Hex body decoder, 123, hex-body-decoder, script-123
+2020-04-03 15:29:30,182 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Base64 body decoder, 123, base64-body-decoder, script-123
+2020-04-03 15:29:30,237 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:03,506 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:12,687 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:13,668 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:26,006 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:34,091 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:35,107 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:35,889 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:36,735 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:37,877 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:43,549 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:48,824 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:30:59,023 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:33:50,797 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:4:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 4 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.checkInlineScript(FormattersController.java:216)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.onChange(FormattersController.java:267)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$000(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$1.changed(FormattersController.java:114)
+	at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:361)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextInputControl$TextProperty.fireValueChangedEvent(TextInputControl.java:1389)
+	at javafx.scene.control.TextInputControl$TextProperty.markInvalid(TextInputControl.java:1393)
+	at javafx.scene.control.TextInputControl$TextProperty.controlContentHasChanged(TextInputControl.java:1332)
+	at javafx.scene.control.TextInputControl$TextProperty.access$1600(TextInputControl.java:1300)
+	at javafx.scene.control.TextInputControl.lambda$new$43(TextInputControl.java:139)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextArea$TextAreaContent.insert(TextArea.java:207)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:1204)
+	at javafx.scene.control.TextInputControl.updateContent(TextInputControl.java:556)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:548)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:510)
+	at javafx.scene.control.TextInputControl.replaceSelection(TextInputControl.java:1084)
+	at javafx.scene.control.TextInputControl.paste(TextInputControl.java:626)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.paste(TextInputControlBehavior.java:356)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callAction(TextInputControlBehavior.java:141)
+	at com.sun.javafx.scene.control.behavior.TextAreaBehavior.callAction(TextAreaBehavior.java:259)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.callActionForEvent(BehaviorBase.java:218)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callActionForEvent(TextInputControlBehavior.java:127)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.lambda$new$11(BehaviorBase.java:135)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$KeyHandler.process(Scene.java:3964)
+	at javafx.scene.Scene$KeyHandler.access$1800(Scene.java:3910)
+	at javafx.scene.Scene.impl_processKeyEvent(Scene.java:2040)
+	at javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2501)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:217)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:149)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$357(GlassViewEventHandler.java:248)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:247)
+	at com.sun.glass.ui.View.handleKeyEvent(View.java:546)
+	at com.sun.glass.ui.View.notifyKey(View.java:966)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:4:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 64 more
+2020-04-03 15:33:50,799 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:33:56,161 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:4:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 4 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.checkInlineScript(FormattersController.java:216)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.onChange(FormattersController.java:267)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$000(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$1.changed(FormattersController.java:114)
+	at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:361)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextInputControl$TextProperty.fireValueChangedEvent(TextInputControl.java:1389)
+	at javafx.scene.control.TextInputControl$TextProperty.markInvalid(TextInputControl.java:1393)
+	at javafx.scene.control.TextInputControl$TextProperty.controlContentHasChanged(TextInputControl.java:1332)
+	at javafx.scene.control.TextInputControl$TextProperty.access$1600(TextInputControl.java:1300)
+	at javafx.scene.control.TextInputControl.lambda$new$43(TextInputControl.java:139)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextArea$TextAreaContent.delete(TextArea.java:290)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:1200)
+	at javafx.scene.control.TextInputControl.updateContent(TextInputControl.java:556)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:548)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:510)
+	at javafx.scene.control.TextInputControl.replaceSelection(TextInputControl.java:1084)
+	at javafx.scene.control.TextInputControl.deletePreviousChar(TextInputControl.java:889)
+	at com.sun.javafx.scene.control.skin.TextAreaSkin.deleteChar(TextAreaSkin.java:1351)
+	at com.sun.javafx.scene.control.behavior.TextAreaBehavior.deleteChar(TextAreaBehavior.java:274)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.deletePreviousChar(TextInputControlBehavior.java:311)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callAction(TextInputControlBehavior.java:143)
+	at com.sun.javafx.scene.control.behavior.TextAreaBehavior.callAction(TextAreaBehavior.java:259)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.callActionForEvent(BehaviorBase.java:218)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callActionForEvent(TextInputControlBehavior.java:127)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.lambda$new$11(BehaviorBase.java:135)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$KeyHandler.process(Scene.java:3964)
+	at javafx.scene.Scene$KeyHandler.access$1800(Scene.java:3910)
+	at javafx.scene.Scene.impl_processKeyEvent(Scene.java:2040)
+	at javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2501)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:217)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:149)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$357(GlassViewEventHandler.java:248)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:247)
+	at com.sun.glass.ui.View.handleKeyEvent(View.java:546)
+	at com.sun.glass.ui.View.notifyKey(View.java:966)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:4:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 66 more
+2020-04-03 15:33:56,162 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:33:57,412 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:4:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 4 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.checkInlineScript(FormattersController.java:216)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.onChange(FormattersController.java:267)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$000(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$1.changed(FormattersController.java:114)
+	at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:361)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextInputControl$TextProperty.fireValueChangedEvent(TextInputControl.java:1389)
+	at javafx.scene.control.TextInputControl$TextProperty.markInvalid(TextInputControl.java:1393)
+	at javafx.scene.control.TextInputControl$TextProperty.controlContentHasChanged(TextInputControl.java:1332)
+	at javafx.scene.control.TextInputControl$TextProperty.access$1600(TextInputControl.java:1300)
+	at javafx.scene.control.TextInputControl.lambda$new$43(TextInputControl.java:139)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextArea$TextAreaContent.delete(TextArea.java:290)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:1200)
+	at javafx.scene.control.TextInputControl.updateContent(TextInputControl.java:556)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:548)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:510)
+	at javafx.scene.control.TextInputControl.replaceSelection(TextInputControl.java:1084)
+	at javafx.scene.control.TextInputControl.deletePreviousChar(TextInputControl.java:889)
+	at com.sun.javafx.scene.control.skin.TextAreaSkin.deleteChar(TextAreaSkin.java:1351)
+	at com.sun.javafx.scene.control.behavior.TextAreaBehavior.deleteChar(TextAreaBehavior.java:274)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.deletePreviousChar(TextInputControlBehavior.java:311)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callAction(TextInputControlBehavior.java:143)
+	at com.sun.javafx.scene.control.behavior.TextAreaBehavior.callAction(TextAreaBehavior.java:259)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.callActionForEvent(BehaviorBase.java:218)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callActionForEvent(TextInputControlBehavior.java:127)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.lambda$new$11(BehaviorBase.java:135)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$KeyHandler.process(Scene.java:3964)
+	at javafx.scene.Scene$KeyHandler.access$1800(Scene.java:3910)
+	at javafx.scene.Scene.impl_processKeyEvent(Scene.java:2040)
+	at javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2501)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:217)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:149)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$357(GlassViewEventHandler.java:248)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:247)
+	at com.sun.glass.ui.View.handleKeyEvent(View.java:546)
+	at com.sun.glass.ui.View.notifyKey(View.java:966)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:4:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 66 more
+2020-04-03 15:33:57,413 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:33:58,097 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 3 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.checkInlineScript(FormattersController.java:216)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.onChange(FormattersController.java:267)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$000(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$1.changed(FormattersController.java:114)
+	at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:361)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextInputControl$TextProperty.fireValueChangedEvent(TextInputControl.java:1389)
+	at javafx.scene.control.TextInputControl$TextProperty.markInvalid(TextInputControl.java:1393)
+	at javafx.scene.control.TextInputControl$TextProperty.controlContentHasChanged(TextInputControl.java:1332)
+	at javafx.scene.control.TextInputControl$TextProperty.access$1600(TextInputControl.java:1300)
+	at javafx.scene.control.TextInputControl.lambda$new$43(TextInputControl.java:139)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextArea$TextAreaContent.delete(TextArea.java:290)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:1200)
+	at javafx.scene.control.TextInputControl.updateContent(TextInputControl.java:556)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:548)
+	at javafx.scene.control.TextInputControl.deleteText(TextInputControl.java:496)
+	at javafx.scene.control.TextInputControl.deletePreviousChar(TextInputControl.java:899)
+	at com.sun.javafx.scene.control.skin.TextAreaSkin.deleteChar(TextAreaSkin.java:1351)
+	at com.sun.javafx.scene.control.behavior.TextAreaBehavior.deleteChar(TextAreaBehavior.java:274)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.deletePreviousChar(TextInputControlBehavior.java:311)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callAction(TextInputControlBehavior.java:143)
+	at com.sun.javafx.scene.control.behavior.TextAreaBehavior.callAction(TextAreaBehavior.java:259)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.callActionForEvent(BehaviorBase.java:218)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callActionForEvent(TextInputControlBehavior.java:127)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.lambda$new$11(BehaviorBase.java:135)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$KeyHandler.process(Scene.java:3964)
+	at javafx.scene.Scene$KeyHandler.access$1800(Scene.java:3910)
+	at javafx.scene.Scene.impl_processKeyEvent(Scene.java:2040)
+	at javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2501)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:217)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:149)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$357(GlassViewEventHandler.java:248)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:247)
+	at com.sun.glass.ui.View.handleKeyEvent(View.java:546)
+	at com.sun.glass.ui.View.notifyKey(View.java:966)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 65 more
+2020-04-03 15:33:58,098 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:34:24,665 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 3 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.addFormatter(ScriptBasedFormatter.java:99)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.showFormatterInfo(FormattersController.java:519)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$400(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:155)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:149)
+	at com.sun.javafx.binding.ExpressionHelper$SingleChange.fireValueChangedEvent(ExpressionHelper.java:182)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyObjectPropertyBase.fireValueChangedEvent(ReadOnlyObjectPropertyBase.java:74)
+	at javafx.beans.property.ReadOnlyObjectWrapper.fireValueChangedEvent(ReadOnlyObjectWrapper.java:102)
+	at javafx.beans.property.ObjectPropertyBase.markInvalid(ObjectPropertyBase.java:112)
+	at javafx.beans.property.ObjectPropertyBase.set(ObjectPropertyBase.java:146)
+	at javafx.scene.control.SelectionModel.setSelectedItem(SelectionModel.java:102)
+	at javafx.scene.control.MultipleSelectionModelBase.lambda$new$34(MultipleSelectionModelBase.java:67)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyIntegerPropertyBase.fireValueChangedEvent(ReadOnlyIntegerPropertyBase.java:72)
+	at javafx.beans.property.ReadOnlyIntegerWrapper.fireValueChangedEvent(ReadOnlyIntegerWrapper.java:102)
+	at javafx.beans.property.IntegerPropertyBase.markInvalid(IntegerPropertyBase.java:113)
+	at javafx.beans.property.IntegerPropertyBase.set(IntegerPropertyBase.java:147)
+	at javafx.scene.control.SelectionModel.setSelectedIndex(SelectionModel.java:68)
+	at javafx.scene.control.MultipleSelectionModelBase.select(MultipleSelectionModelBase.java:404)
+	at javafx.scene.control.MultipleSelectionModelBase.clearAndSelect(MultipleSelectionModelBase.java:356)
+	at javafx.scene.control.ListView$ListViewBitSetSelectionModel.clearAndSelect(ListView.java:1403)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.simpleSelect(CellBehaviorBase.java:256)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.doSelect(CellBehaviorBase.java:220)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.mousePressed(CellBehaviorBase.java:150)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:95)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:89)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3757)
+	at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)
+	at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:394)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$358(GlassViewEventHandler.java:432)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:431)
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:555)
+	at com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 70 more
+2020-04-03 15:34:24,667 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:34:26,867 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:34:29,022 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 3 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.addFormatter(ScriptBasedFormatter.java:99)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.showFormatterInfo(FormattersController.java:519)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$400(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:155)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:149)
+	at com.sun.javafx.binding.ExpressionHelper$SingleChange.fireValueChangedEvent(ExpressionHelper.java:182)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyObjectPropertyBase.fireValueChangedEvent(ReadOnlyObjectPropertyBase.java:74)
+	at javafx.beans.property.ReadOnlyObjectWrapper.fireValueChangedEvent(ReadOnlyObjectWrapper.java:102)
+	at javafx.beans.property.ObjectPropertyBase.markInvalid(ObjectPropertyBase.java:112)
+	at javafx.beans.property.ObjectPropertyBase.set(ObjectPropertyBase.java:146)
+	at javafx.scene.control.SelectionModel.setSelectedItem(SelectionModel.java:102)
+	at javafx.scene.control.MultipleSelectionModelBase.lambda$new$34(MultipleSelectionModelBase.java:67)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyIntegerPropertyBase.fireValueChangedEvent(ReadOnlyIntegerPropertyBase.java:72)
+	at javafx.beans.property.ReadOnlyIntegerWrapper.fireValueChangedEvent(ReadOnlyIntegerWrapper.java:102)
+	at javafx.beans.property.IntegerPropertyBase.markInvalid(IntegerPropertyBase.java:113)
+	at javafx.beans.property.IntegerPropertyBase.set(IntegerPropertyBase.java:147)
+	at javafx.scene.control.SelectionModel.setSelectedIndex(SelectionModel.java:68)
+	at javafx.scene.control.MultipleSelectionModelBase.select(MultipleSelectionModelBase.java:404)
+	at javafx.scene.control.MultipleSelectionModelBase.clearAndSelect(MultipleSelectionModelBase.java:356)
+	at javafx.scene.control.ListView$ListViewBitSetSelectionModel.clearAndSelect(ListView.java:1403)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.simpleSelect(CellBehaviorBase.java:256)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.doSelect(CellBehaviorBase.java:220)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.mousePressed(CellBehaviorBase.java:150)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:95)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:89)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3757)
+	at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)
+	at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:394)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$358(GlassViewEventHandler.java:432)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:431)
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:555)
+	at com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 70 more
+2020-04-03 15:34:29,023 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:35:22,310 INFO  [JavaFX Application Thread     ] [MqttAsyncConnection           ]  - Publishing message on topic "server". Payload size = "3"
+2020-04-03 15:35:32,772 INFO  [JavaFX Application Thread     ] [NewPublicationController      ]  - Script name response = Optional[1]
+2020-04-03 15:35:32,790 INFO  [JavaFX Application Thread     ] [NewPublicationController      ]  - Writing file to C:\Users\java\mqtt-spy\1.js
+2020-04-03 15:35:35,981 INFO  [JavaFX Application Thread     ] [MqttAsyncConnection           ]  - Publishing message on topic "server". Payload size = "3"
+2020-04-03 15:35:38,310 INFO  [JavaFX Application Thread     ] [MqttAsyncConnection           ]  - Publishing message on topic "server". Payload size = "7"
+2020-04-03 15:35:39,993 INFO  [mqtt-spy [Script 1]           ] [MqttAsyncConnection           ]  - Publishing message on topic "server". Payload size = "3"
+2020-04-03 15:35:41,103 INFO  [mqtt-spy [Script 1]           ] [MqttAsyncConnection           ]  - Publishing message on topic "server". Payload size = "3"
+2020-04-03 15:35:42,455 INFO  [mqtt-spy [Script 1]           ] [MqttAsyncConnection           ]  - Publishing message on topic "server". Payload size = "3"
+2020-04-03 15:35:43,559 INFO  [mqtt-spy [Script 1]           ] [MqttAsyncConnection           ]  - Publishing message on topic "server". Payload size = "3"
+2020-04-03 15:36:04,350 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 15:39:16,234 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 3 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.addFormatter(ScriptBasedFormatter.java:99)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.showFormatterInfo(FormattersController.java:519)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$400(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:155)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:149)
+	at com.sun.javafx.binding.ExpressionHelper$SingleChange.fireValueChangedEvent(ExpressionHelper.java:182)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyObjectPropertyBase.fireValueChangedEvent(ReadOnlyObjectPropertyBase.java:74)
+	at javafx.beans.property.ReadOnlyObjectWrapper.fireValueChangedEvent(ReadOnlyObjectWrapper.java:102)
+	at javafx.beans.property.ObjectPropertyBase.markInvalid(ObjectPropertyBase.java:112)
+	at javafx.beans.property.ObjectPropertyBase.set(ObjectPropertyBase.java:146)
+	at javafx.scene.control.SelectionModel.setSelectedItem(SelectionModel.java:102)
+	at javafx.scene.control.MultipleSelectionModelBase.lambda$new$34(MultipleSelectionModelBase.java:67)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyIntegerPropertyBase.fireValueChangedEvent(ReadOnlyIntegerPropertyBase.java:72)
+	at javafx.beans.property.ReadOnlyIntegerWrapper.fireValueChangedEvent(ReadOnlyIntegerWrapper.java:102)
+	at javafx.beans.property.IntegerPropertyBase.markInvalid(IntegerPropertyBase.java:113)
+	at javafx.beans.property.IntegerPropertyBase.set(IntegerPropertyBase.java:147)
+	at javafx.scene.control.SelectionModel.setSelectedIndex(SelectionModel.java:68)
+	at javafx.scene.control.MultipleSelectionModelBase.select(MultipleSelectionModelBase.java:404)
+	at javafx.scene.control.MultipleSelectionModelBase.clearAndSelect(MultipleSelectionModelBase.java:356)
+	at javafx.scene.control.ListView$ListViewBitSetSelectionModel.clearAndSelect(ListView.java:1403)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.simpleSelect(CellBehaviorBase.java:256)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.doSelect(CellBehaviorBase.java:220)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.mousePressed(CellBehaviorBase.java:150)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:95)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:89)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3757)
+	at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)
+	at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:394)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$358(GlassViewEventHandler.java:432)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:431)
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:555)
+	at com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 70 more
+2020-04-03 15:39:16,235 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:53:38,028 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:53:42,350 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:53:42,985 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:54:00,367 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 3 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.addFormatter(ScriptBasedFormatter.java:99)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.showFormatterInfo(FormattersController.java:519)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$400(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:155)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:149)
+	at com.sun.javafx.binding.ExpressionHelper$SingleChange.fireValueChangedEvent(ExpressionHelper.java:182)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyObjectPropertyBase.fireValueChangedEvent(ReadOnlyObjectPropertyBase.java:74)
+	at javafx.beans.property.ReadOnlyObjectWrapper.fireValueChangedEvent(ReadOnlyObjectWrapper.java:102)
+	at javafx.beans.property.ObjectPropertyBase.markInvalid(ObjectPropertyBase.java:112)
+	at javafx.beans.property.ObjectPropertyBase.set(ObjectPropertyBase.java:146)
+	at javafx.scene.control.SelectionModel.setSelectedItem(SelectionModel.java:102)
+	at javafx.scene.control.MultipleSelectionModelBase.lambda$new$34(MultipleSelectionModelBase.java:67)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyIntegerPropertyBase.fireValueChangedEvent(ReadOnlyIntegerPropertyBase.java:72)
+	at javafx.beans.property.ReadOnlyIntegerWrapper.fireValueChangedEvent(ReadOnlyIntegerWrapper.java:102)
+	at javafx.beans.property.IntegerPropertyBase.markInvalid(IntegerPropertyBase.java:113)
+	at javafx.beans.property.IntegerPropertyBase.set(IntegerPropertyBase.java:147)
+	at javafx.scene.control.SelectionModel.setSelectedIndex(SelectionModel.java:68)
+	at javafx.scene.control.MultipleSelectionModelBase.select(MultipleSelectionModelBase.java:404)
+	at javafx.scene.control.MultipleSelectionModelBase.clearAndSelect(MultipleSelectionModelBase.java:356)
+	at javafx.scene.control.ListView$ListViewBitSetSelectionModel.clearAndSelect(ListView.java:1403)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.simpleSelect(CellBehaviorBase.java:256)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.doSelect(CellBehaviorBase.java:220)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.mousePressed(CellBehaviorBase.java:150)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:95)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:89)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3757)
+	at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)
+	at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:394)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$358(GlassViewEventHandler.java:432)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:431)
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:555)
+	at com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 70 more
+2020-04-03 15:54:00,367 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:54:56,012 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^ in <eval> at line number 3 at column number 12
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.addFormatter(ScriptBasedFormatter.java:99)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.showFormatterInfo(FormattersController.java:519)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$400(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:155)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:149)
+	at com.sun.javafx.binding.ExpressionHelper$SingleChange.fireValueChangedEvent(ExpressionHelper.java:182)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyObjectPropertyBase.fireValueChangedEvent(ReadOnlyObjectPropertyBase.java:74)
+	at javafx.beans.property.ReadOnlyObjectWrapper.fireValueChangedEvent(ReadOnlyObjectWrapper.java:102)
+	at javafx.beans.property.ObjectPropertyBase.markInvalid(ObjectPropertyBase.java:112)
+	at javafx.beans.property.ObjectPropertyBase.set(ObjectPropertyBase.java:146)
+	at javafx.scene.control.SelectionModel.setSelectedItem(SelectionModel.java:102)
+	at javafx.scene.control.MultipleSelectionModelBase.lambda$new$34(MultipleSelectionModelBase.java:67)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyIntegerPropertyBase.fireValueChangedEvent(ReadOnlyIntegerPropertyBase.java:72)
+	at javafx.beans.property.ReadOnlyIntegerWrapper.fireValueChangedEvent(ReadOnlyIntegerWrapper.java:102)
+	at javafx.beans.property.IntegerPropertyBase.markInvalid(IntegerPropertyBase.java:113)
+	at javafx.beans.property.IntegerPropertyBase.set(IntegerPropertyBase.java:147)
+	at javafx.scene.control.SelectionModel.setSelectedIndex(SelectionModel.java:68)
+	at javafx.scene.control.MultipleSelectionModelBase.select(MultipleSelectionModelBase.java:404)
+	at javafx.scene.control.MultipleSelectionModelBase.clearAndSelect(MultipleSelectionModelBase.java:356)
+	at javafx.scene.control.ListView$ListViewBitSetSelectionModel.clearAndSelect(ListView.java:1403)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.simpleSelect(CellBehaviorBase.java:256)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.doSelect(CellBehaviorBase.java:220)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.mousePressed(CellBehaviorBase.java:150)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:95)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:89)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3757)
+	at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)
+	at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:394)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$358(GlassViewEventHandler.java:432)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:431)
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:555)
+	at com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:12 Expected ; but found index
+        int index = 4 + 16 + 1;
+            ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 70 more
+2020-04-03 15:54:56,013 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:54:59,266 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:19 Expected ; but found index
+               int index = 4 + 16 + 1;
+                   ^ in <eval> at line number 3 at column number 19
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.checkInlineScript(FormattersController.java:216)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.onChange(FormattersController.java:267)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$000(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$1.changed(FormattersController.java:114)
+	at com.sun.javafx.binding.ExpressionHelper$Generic.fireValueChangedEvent(ExpressionHelper.java:361)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextInputControl$TextProperty.fireValueChangedEvent(TextInputControl.java:1389)
+	at javafx.scene.control.TextInputControl$TextProperty.markInvalid(TextInputControl.java:1393)
+	at javafx.scene.control.TextInputControl$TextProperty.controlContentHasChanged(TextInputControl.java:1332)
+	at javafx.scene.control.TextInputControl$TextProperty.access$1600(TextInputControl.java:1300)
+	at javafx.scene.control.TextInputControl.lambda$new$43(TextInputControl.java:139)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.scene.control.TextArea$TextAreaContent.insert(TextArea.java:207)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:1204)
+	at javafx.scene.control.TextInputControl.updateContent(TextInputControl.java:556)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:548)
+	at javafx.scene.control.TextInputControl.replaceText(TextInputControl.java:510)
+	at javafx.scene.control.TextInputControl.replaceSelection(TextInputControl.java:1084)
+	at javafx.scene.control.TextInputControl.paste(TextInputControl.java:626)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.paste(TextInputControlBehavior.java:356)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callAction(TextInputControlBehavior.java:141)
+	at com.sun.javafx.scene.control.behavior.TextAreaBehavior.callAction(TextAreaBehavior.java:259)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.callActionForEvent(BehaviorBase.java:218)
+	at com.sun.javafx.scene.control.behavior.TextInputControlBehavior.callActionForEvent(TextInputControlBehavior.java:127)
+	at com.sun.javafx.scene.control.behavior.BehaviorBase.lambda$new$11(BehaviorBase.java:135)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$KeyHandler.process(Scene.java:3964)
+	at javafx.scene.Scene$KeyHandler.access$1800(Scene.java:3910)
+	at javafx.scene.Scene.impl_processKeyEvent(Scene.java:2040)
+	at javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2501)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:217)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:149)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$357(GlassViewEventHandler.java:248)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:247)
+	at com.sun.glass.ui.View.handleKeyEvent(View.java:546)
+	at com.sun.glass.ui.View.notifyKey(View.java:966)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:19 Expected ; but found index
+               int index = 4 + 16 + 1;
+                   ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 64 more
+2020-04-03 15:54:59,267 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:55:09,564 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:19 Expected ; but found index
+               int index = 4 + 16 + 1;
+                   ^ in <eval> at line number 3 at column number 19
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.addFormatter(ScriptBasedFormatter.java:99)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.showFormatterInfo(FormattersController.java:519)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$400(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:155)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:149)
+	at com.sun.javafx.binding.ExpressionHelper$SingleChange.fireValueChangedEvent(ExpressionHelper.java:182)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyObjectPropertyBase.fireValueChangedEvent(ReadOnlyObjectPropertyBase.java:74)
+	at javafx.beans.property.ReadOnlyObjectWrapper.fireValueChangedEvent(ReadOnlyObjectWrapper.java:102)
+	at javafx.beans.property.ObjectPropertyBase.markInvalid(ObjectPropertyBase.java:112)
+	at javafx.beans.property.ObjectPropertyBase.set(ObjectPropertyBase.java:146)
+	at javafx.scene.control.SelectionModel.setSelectedItem(SelectionModel.java:102)
+	at javafx.scene.control.MultipleSelectionModelBase.lambda$new$34(MultipleSelectionModelBase.java:67)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyIntegerPropertyBase.fireValueChangedEvent(ReadOnlyIntegerPropertyBase.java:72)
+	at javafx.beans.property.ReadOnlyIntegerWrapper.fireValueChangedEvent(ReadOnlyIntegerWrapper.java:102)
+	at javafx.beans.property.IntegerPropertyBase.markInvalid(IntegerPropertyBase.java:113)
+	at javafx.beans.property.IntegerPropertyBase.set(IntegerPropertyBase.java:147)
+	at javafx.scene.control.SelectionModel.setSelectedIndex(SelectionModel.java:68)
+	at javafx.scene.control.MultipleSelectionModelBase.select(MultipleSelectionModelBase.java:404)
+	at javafx.scene.control.MultipleSelectionModelBase.clearAndSelect(MultipleSelectionModelBase.java:356)
+	at javafx.scene.control.ListView$ListViewBitSetSelectionModel.clearAndSelect(ListView.java:1403)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.simpleSelect(CellBehaviorBase.java:256)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.doSelect(CellBehaviorBase.java:220)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.mousePressed(CellBehaviorBase.java:150)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:95)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:89)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3757)
+	at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)
+	at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:394)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$358(GlassViewEventHandler.java:432)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:431)
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:555)
+	at com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:19 Expected ; but found index
+               int index = 4 + 16 + 1;
+                   ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 70 more
+2020-04-03 15:55:09,565 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:55:16,757 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:55:19,913 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:55:23,220 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:55:24,882 ERROR [JavaFX Application Thread     ] [ScriptRunner                  ]  - Script execution exception
+javax.script.ScriptException: <eval>:3:19 Expected ; but found index
+               int index = 4 + 16 + 1;
+                   ^ in <eval> at line number 3 at column number 19
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.runScript(ScriptRunner.java:164)
+	at pl.baczkowicz.spy.scripts.ScriptRunner.run(ScriptRunner.java:108)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:383)
+	at pl.baczkowicz.spy.scripts.BaseScriptManager.runScript(BaseScriptManager.java:350)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.evaluate(ScriptBasedFormatter.java:74)
+	at pl.baczkowicz.spy.formatting.ScriptBasedFormatter.addFormatter(ScriptBasedFormatter.java:99)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.showFormatterInfo(FormattersController.java:519)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController.access$400(FormattersController.java:69)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:155)
+	at pl.baczkowicz.spy.ui.controllers.FormattersController$3.changed(FormattersController.java:149)
+	at com.sun.javafx.binding.ExpressionHelper$SingleChange.fireValueChangedEvent(ExpressionHelper.java:182)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyObjectPropertyBase.fireValueChangedEvent(ReadOnlyObjectPropertyBase.java:74)
+	at javafx.beans.property.ReadOnlyObjectWrapper.fireValueChangedEvent(ReadOnlyObjectWrapper.java:102)
+	at javafx.beans.property.ObjectPropertyBase.markInvalid(ObjectPropertyBase.java:112)
+	at javafx.beans.property.ObjectPropertyBase.set(ObjectPropertyBase.java:146)
+	at javafx.scene.control.SelectionModel.setSelectedItem(SelectionModel.java:102)
+	at javafx.scene.control.MultipleSelectionModelBase.lambda$new$34(MultipleSelectionModelBase.java:67)
+	at com.sun.javafx.binding.ExpressionHelper$SingleInvalidation.fireValueChangedEvent(ExpressionHelper.java:137)
+	at com.sun.javafx.binding.ExpressionHelper.fireValueChangedEvent(ExpressionHelper.java:81)
+	at javafx.beans.property.ReadOnlyIntegerPropertyBase.fireValueChangedEvent(ReadOnlyIntegerPropertyBase.java:72)
+	at javafx.beans.property.ReadOnlyIntegerWrapper.fireValueChangedEvent(ReadOnlyIntegerWrapper.java:102)
+	at javafx.beans.property.IntegerPropertyBase.markInvalid(IntegerPropertyBase.java:113)
+	at javafx.beans.property.IntegerPropertyBase.set(IntegerPropertyBase.java:147)
+	at javafx.scene.control.SelectionModel.setSelectedIndex(SelectionModel.java:68)
+	at javafx.scene.control.MultipleSelectionModelBase.select(MultipleSelectionModelBase.java:404)
+	at javafx.scene.control.MultipleSelectionModelBase.clearAndSelect(MultipleSelectionModelBase.java:356)
+	at javafx.scene.control.ListView$ListViewBitSetSelectionModel.clearAndSelect(ListView.java:1403)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.simpleSelect(CellBehaviorBase.java:256)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.doSelect(CellBehaviorBase.java:220)
+	at com.sun.javafx.scene.control.behavior.CellBehaviorBase.mousePressed(CellBehaviorBase.java:150)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:95)
+	at com.sun.javafx.scene.control.skin.BehaviorSkinBase$1.handle(BehaviorSkinBase.java:89)
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3757)
+	at javafx.scene.Scene$MouseHandler.access$1500(Scene.java:3485)
+	at javafx.scene.Scene.impl_processMouseEvent(Scene.java:1762)
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2494)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:394)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$358(GlassViewEventHandler.java:432)
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:389)
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:431)
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:555)
+	at com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$152(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:19 Expected ; but found index
+               int index = 4 + 16 + 1;
+                   ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 70 more
+2020-04-03 15:55:24,883 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:55:30,203 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:56:00,023 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Plain, 111, default, script-111
+2020-04-03 15:56:00,023 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - HEX decoder, 111, default-hexDecoder, script-111
+2020-04-03 15:56:00,023 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - HEX encoder, 111, default-hexEncoder, script-111
+2020-04-03 15:56:00,023 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Base64 decoder, 111, default-base64Decoder, script-111
+2020-04-03 15:56:00,023 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Base64 encoder, 111, default-base64Encoder, script-111
+2020-04-03 15:56:00,023 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Pretty JSON, 111, defaultscript-pretty-json, script-111
+2020-04-03 15:56:00,023 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Pretty XML, 111, defaultscript-pretty-xml, script-111
+2020-04-03 15:56:00,024 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Eclipse Kura, 111, defaultscript-eclipse-kura, script-111
+2020-04-03 15:56:00,024 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Hex body decoder, 111, hex-body-decoder, script-111
+2020-04-03 15:56:00,024 INFO  [JavaFX Application Thread     ] [FormattersController          ]  - Base64 body decoder, 111, base64-body-decoder, script-111
+2020-04-03 15:56:00,062 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:56:09,738 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:56:10,230 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:56:13,449 INFO  [JavaFX Application Thread     ] [ScriptBasedFormatter          ]  - No setup method present
+2020-04-03 15:58:28,841 WARN  [JavaFX Application Thread     ] [TestCasesExecutionController  ]  - No test case selected
+2020-04-03 15:58:29,281 WARN  [JavaFX Application Thread     ] [TestCasesExecutionController  ]  - No test case selected
+2020-04-03 15:58:33,698 WARN  [JavaFX Application Thread     ] [TestCasesExecutionController  ]  - No test case selected
+2020-04-03 15:58:34,833 WARN  [JavaFX Application Thread     ] [TestCasesExecutionController  ]  - No test case selected
+2020-04-03 15:58:35,010 WARN  [JavaFX Application Thread     ] [TestCasesExecutionController  ]  - No test case selected
+2020-04-03 15:58:35,441 WARN  [JavaFX Application Thread     ] [TestCasesExecutionController  ]  - No test case selected
+2020-04-03 16:30:50,668 INFO  [JavaFX Application Thread     ] [BaseMqttConnection            ]  - Successfully unsubscribed from server
+2020-04-03 16:30:50,669 INFO  [JavaFX Application Thread     ] [MqttConnectionWithReconnection]  - Disconnecting java150712081 from [tcp://192.168.1.205]
+2020-04-03 16:30:50,673 INFO  [MQTT Disc: java150712081      ] [MqttDisconnectionResultHandler]  - 192.168.1.205 disconnected
+2020-04-03 16:31:01,356 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 16:31:01,512 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 16:31:06,517 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 16:31:07,805 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (192.168.1.205 -> tcp://192.168.1.205)
+2020-04-03 16:31:09,155 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 16:31:09,784 INFO  [mqtt-spy [ConnectionRunnable for 192.168.1.205]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java150712081] to server [[tcp://192.168.1.205]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 16:31:09,847 INFO  [MQTT Call: java150712081      ] [MqttConnectionResultHandler   ]  - 192.168.1.205 connected
+2020-04-03 16:31:09,894 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 17:22:47,946 ERROR [JavaFX Application Thread     ] [NewPublicationController      ]  - Cannot publish to an empty topic
+2020-04-03 17:23:03,570 INFO  [JavaFX Application Thread     ] [MqttConnectionWithReconnection]  - Disconnecting java150712081 from [tcp://192.168.1.205]
+2020-04-03 17:23:03,575 INFO  [MQTT Disc: java150712081      ] [MqttDisconnectionResultHandler]  - 192.168.1.205 disconnected
+2020-04-03 17:23:20,096 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 17:23:20,370 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 17:23:24,108 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (192.168.1.205 -> tcp://192.168.1.205)
+2020-04-03 17:23:24,787 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot unmarshal the XML
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:285)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:98)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157)
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:214)
+	at pl.baczkowicz.spy.xml.XMLParser.loadFromString(XMLParser.java:277)
+	... 3 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; 文件提前结束。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1472)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:1014)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243)
+	... 7 more
+2020-04-03 17:23:26,760 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 17:23:27,751 INFO  [mqtt-spy [ConnectionRunnable for 192.168.1.205]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java150712081] to server [[tcp://192.168.1.205]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 17:23:28,048 INFO  [MQTT Call: java150712081      ] [MqttConnectionResultHandler   ]  - 192.168.1.205 connected
+2020-04-03 17:23:28,102 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 17:32:40,328 INFO  [JavaFX Application Thread     ] [MqttConnectionWithReconnection]  - Disconnecting java150712081 from [tcp://192.168.1.205]
+2020-04-03 17:32:40,338 INFO  [MQTT Disc: java150712081      ] [MqttDisconnectionResultHandler]  - 192.168.1.205 disconnected
+2020-04-03 17:32:48,743 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Default configuration file present (C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml) = true
+2020-04-03 17:32:48,858 INFO  [JavaFX Application Thread     ] [MqttViewManager               ]  - Loading configuration file from C:\Users\java\mqtt-spy\mqtt-spy-configuration.xml
+2020-04-03 17:33:03,092 INFO  [JavaFX Application Thread     ] [MqttConfigurationUtils        ]  - Auto-complete for server URI (192.168.1.205 -> tcp://192.168.1.205)
+2020-04-03 17:33:04,575 ERROR [JavaFX Application Thread     ] [FileUtils                     ]  - No files in C:\Users\java\mqtt-spy\
+2020-04-03 17:33:05,259 INFO  [mqtt-spy [ConnectionRunnable for 192.168.1.205]] [MqttAsyncConnectionRunnable   ]  - Connecting client ID [java150712081] to server [[tcp://192.168.1.205]]; options = 
+============== Connection options ==============
+CleanSession                :  true
+SocketFactory               :  null
+MqttVersion                 :  0
+KeepAliveInterval           :  60
+ConTimeout                  :  30
+UserName                    :  iexin
+SSLProperties               :  null
+WillDestination             :  null
+==========================================
+
+2020-04-03 17:33:05,317 INFO  [MQTT Call: java150712081      ] [MqttConnectionResultHandler   ]  - 192.168.1.205 connected
+2020-04-03 17:33:05,364 INFO  [JavaFX Application Thread     ] [MqttEventHandler              ]  - About to resubscribe to all requested topics
+2020-04-03 17:33:17,610 ERROR [JavaFX Application Thread     ] [ControlPanelController        ]  - Cannot retrieve version info
+pl.baczkowicz.spy.exceptions.XMLException: Cannot read version info from http://baczkowicz.pl/mqtt-spy/version_0_6_0.xml?current=1.0.1-beta-
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:102)
+	at pl.baczkowicz.spy.ui.controllers.ControlPanelController$2.run(ControlPanelController.java:203)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:698)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1587)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at java.net.URL.openStream(URL.java:1045)
+	at pl.baczkowicz.spy.ui.versions.VersionManager.loadVersions(VersionManager.java:94)
+	... 2 more
+2020-04-03 17:33:29,904 INFO  [JavaFX Application Thread     ] [NewSubscriptionController     ]  - Subscribing to server4
+2020-04-03 17:33:29,905 INFO  [JavaFX Application Thread     ] [MqttSubscriptionViewManager   ]  - Creating subscription for server4
+2020-04-03 17:33:30,191 INFO  [JavaFX Application Thread     ] [BaseMqttConnection            ]  - Subscribed to server4
+2020-04-03 17:34:01,541 INFO  [JavaFX Application Thread     ] [MqttAsyncConnection           ]  - Publishing message on topic "server4". Payload size = "6"
+2020-04-03 17:35:06,399 INFO  [JavaFX Application Thread     ] [MqttAsyncConnection           ]  - Publishing message on topic "server4". Payload size = "9"
+2020-04-03 17:35:35,573 INFO  [JavaFX Application Thread     ] [MqttAsyncConnection           ]  - Publishing message on topic "server4". Payload size = "18"
+2020-04-03 17:45:04,767 INFO  [JavaFX Application Thread     ] [NewPublicationController      ]  - Converted 222223333sasdadadd to 323232323233333333736173646164616464
+2020-04-03 17:45:05,886 INFO  [JavaFX Application Thread     ] [NewPublicationController      ]  - Converted 323232323233333333736173646164616464 to 222223333sasdadadd
+2020-04-03 17:45:07,325 INFO  [JavaFX Application Thread     ] [NewPublicationController      ]  - Converted 222223333sasdadadd to MjIyMjIzMzMzc2FzZGFkYWRk
+2020-04-03 17:45:08,757 INFO  [JavaFX Application Thread     ] [NewPublicationController      ]  - Converted MjIyMjIzMzMzc2FzZGFkYWRk to 323232323233333333736173646164616464
+2020-04-03 17:45:09,942 INFO  [JavaFX Application Thread     ] [NewPublicationController      ]  - Converted 323232323233333333736173646164616464 to 222223333sasdadadd
